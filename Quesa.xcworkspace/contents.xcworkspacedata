@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Development/Projects/Mac/Quesa.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SDK/Examples/FilamentViewer/FilamentViewer.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SDK/Examples/Geom Test/Geom Test.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SDK/Examples/StereoDemo/StereoDemo.xcodeproj">
+   </FileRef>
+</Workspace>

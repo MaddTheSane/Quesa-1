@@ -271,6 +271,8 @@
 #ifndef QUESA_ENUM_BASE
 	#ifdef QUESA_CPP11
 		#define		QUESA_ENUM_BASE( base )	: base
+	#elif __has_feature(objc_fixed_enum)
+		#define		QUESA_ENUM_BASE( base )	: base
 	#else
 		#define		QUESA_ENUM_BASE( base )
 	#endif
@@ -336,7 +338,7 @@ typedef signed __int32 int32_t;
 #elif defined(__BORLANDC__)
 	#include <stdint.h>
 #else
-	#include <inttypes.h>
+	#include <stdint.h>
 #endif
 //=============================================================================
 //      C++ preamble

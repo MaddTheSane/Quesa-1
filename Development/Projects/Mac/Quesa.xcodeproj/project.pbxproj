@@ -21,6 +21,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		55BD631A2803FDF700CDEA64 /* QMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD63182803FDF700CDEA64 /* QMath.swift */; };
+		55BD631B2803FDF700CDEA64 /* QMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD63182803FDF700CDEA64 /* QMath.swift */; };
+		55BD631C2803FDF700CDEA64 /* QTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD63192803FDF700CDEA64 /* QTypes.swift */; };
+		55BD631D2803FDF700CDEA64 /* QTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD63192803FDF700CDEA64 /* QTypes.swift */; };
 		AB3A7CA6055E63B200CA83BE /* E3GeometryBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AB3A7B87055E63B100CA83BE /* E3GeometryBox.cpp */; };
 		AB3A7CA8055E63B200CA83BE /* E3GeometryCone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AB3A7B89055E63B100CA83BE /* E3GeometryCone.cpp */; };
 		AB3A7CAA055E63B200CA83BE /* E3GeometryCylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AB3A7B8B055E63B100CA83BE /* E3GeometryCylinder.cpp */; };
@@ -571,6 +575,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		55BD63182803FDF700CDEA64 /* QMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QMath.swift; sourceTree = "<group>"; };
+		55BD63192803FDF700CDEA64 /* QTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTypes.swift; sourceTree = "<group>"; };
+		55BD631E2803FEB300CDEA64 /* Quesa.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = Quesa.modulemap; sourceTree = "<group>"; };
 		8D07F2C80486CC7A007CD1D0 /* Quesa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Quesa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB3A7B85055E63B100CA83BE /* E3Geometry.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; path = E3Geometry.cpp; sourceTree = "<group>"; };
 		AB3A7B86055E63B100CA83BE /* E3Geometry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = E3Geometry.h; sourceTree = "<group>"; };
@@ -788,33 +795,33 @@
 		BE5EE9EC26195CF00049B72A /* Static-NoGL.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Static-NoGL.xcconfig"; sourceTree = "<group>"; };
 		BE6C6F4F0C134DD300FBD60D /* E3Math_Intersect.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = E3Math_Intersect.h; sourceTree = "<group>"; };
 		BE6C6F500C134DD300FBD60D /* E3Math_Intersect.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = E3Math_Intersect.cpp; sourceTree = "<group>"; };
-		BE6D576B261D188200F44B8D /* geom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = geom.h; path = "../../Source/Core/glu tessellation from Mesa/geom.h"; sourceTree = "<group>"; };
-		BE6D576C261D188300F44B8D /* render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = render.h; path = "../../Source/Core/glu tessellation from Mesa/render.h"; sourceTree = "<group>"; };
-		BE6D576D261D188300F44B8D /* memalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = memalloc.c; path = "../../Source/Core/glu tessellation from Mesa/memalloc.c"; sourceTree = "<group>"; };
-		BE6D576E261D188300F44B8D /* gluos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gluos.h; path = "../../Source/Core/glu tessellation from Mesa/gluos.h"; sourceTree = "<group>"; };
-		BE6D576F261D188300F44B8D /* normal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = normal.h; path = "../../Source/Core/glu tessellation from Mesa/normal.h"; sourceTree = "<group>"; };
-		BE6D5770261D188300F44B8D /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README; path = "../../Source/Core/glu tessellation from Mesa/README"; sourceTree = "<group>"; };
-		BE6D5771261D188300F44B8D /* mesh.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mesh.c; path = "../../Source/Core/glu tessellation from Mesa/mesh.c"; sourceTree = "<group>"; };
-		BE6D5772261D188300F44B8D /* tess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tess.h; path = "../../Source/Core/glu tessellation from Mesa/tess.h"; sourceTree = "<group>"; };
-		BE6D5773261D188300F44B8D /* normal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = normal.c; path = "../../Source/Core/glu tessellation from Mesa/normal.c"; sourceTree = "<group>"; };
-		BE6D5774261D188300F44B8D /* sweep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sweep.h; path = "../../Source/Core/glu tessellation from Mesa/sweep.h"; sourceTree = "<group>"; };
-		BE6D5775261D188300F44B8D /* mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mesh.h; path = "../../Source/Core/glu tessellation from Mesa/mesh.h"; sourceTree = "<group>"; };
-		BE6D5776261D188300F44B8D /* glu-mesa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "glu-mesa.h"; path = "../../Source/Core/glu tessellation from Mesa/glu-mesa.h"; sourceTree = "<group>"; };
-		BE6D5777261D188300F44B8D /* memalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = memalloc.h; path = "../../Source/Core/glu tessellation from Mesa/memalloc.h"; sourceTree = "<group>"; };
-		BE6D5778261D188300F44B8D /* priorityq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = priorityq.h; path = "../../Source/Core/glu tessellation from Mesa/priorityq.h"; sourceTree = "<group>"; };
-		BE6D5779261D188300F44B8D /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dict.c; path = "../../Source/Core/glu tessellation from Mesa/dict.c"; sourceTree = "<group>"; };
-		BE6D577A261D188300F44B8D /* geom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = geom.c; path = "../../Source/Core/glu tessellation from Mesa/geom.c"; sourceTree = "<group>"; };
-		BE6D577B261D188300F44B8D /* dict-list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "dict-list.h"; path = "../../Source/Core/glu tessellation from Mesa/dict-list.h"; sourceTree = "<group>"; };
-		BE6D577C261D188300F44B8D /* tessmono.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = tessmono.c; path = "../../Source/Core/glu tessellation from Mesa/tessmono.c"; sourceTree = "<group>"; };
-		BE6D577D261D188300F44B8D /* priorityq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = priorityq.c; path = "../../Source/Core/glu tessellation from Mesa/priorityq.c"; sourceTree = "<group>"; };
-		BE6D577E261D188300F44B8D /* dict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dict.h; path = "../../Source/Core/glu tessellation from Mesa/dict.h"; sourceTree = "<group>"; };
-		BE6D577F261D188300F44B8D /* priorityq-heap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "priorityq-heap.h"; path = "../../Source/Core/glu tessellation from Mesa/priorityq-heap.h"; sourceTree = "<group>"; };
-		BE6D5780261D188300F44B8D /* priorityq-heap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "priorityq-heap.c"; path = "../../Source/Core/glu tessellation from Mesa/priorityq-heap.c"; sourceTree = "<group>"; };
-		BE6D5781261D188300F44B8D /* sweep.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sweep.c; path = "../../Source/Core/glu tessellation from Mesa/sweep.c"; sourceTree = "<group>"; };
-		BE6D5782261D188300F44B8D /* tessmono.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tessmono.h; path = "../../Source/Core/glu tessellation from Mesa/tessmono.h"; sourceTree = "<group>"; };
-		BE6D5783261D188300F44B8D /* priorityq-sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "priorityq-sort.h"; path = "../../Source/Core/glu tessellation from Mesa/priorityq-sort.h"; sourceTree = "<group>"; };
-		BE6D5784261D188300F44B8D /* tess.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = tess.c; path = "../../Source/Core/glu tessellation from Mesa/tess.c"; sourceTree = "<group>"; };
-		BE6D5785261D188300F44B8D /* render.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = render.c; path = "../../Source/Core/glu tessellation from Mesa/render.c"; sourceTree = "<group>"; };
+		BE6D576B261D188200F44B8D /* geom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = geom.h; sourceTree = "<group>"; };
+		BE6D576C261D188300F44B8D /* render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = render.h; sourceTree = "<group>"; };
+		BE6D576D261D188300F44B8D /* memalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = memalloc.c; sourceTree = "<group>"; };
+		BE6D576E261D188300F44B8D /* gluos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gluos.h; sourceTree = "<group>"; };
+		BE6D576F261D188300F44B8D /* normal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = normal.h; sourceTree = "<group>"; };
+		BE6D5770261D188300F44B8D /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		BE6D5771261D188300F44B8D /* mesh.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mesh.c; sourceTree = "<group>"; };
+		BE6D5772261D188300F44B8D /* tess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tess.h; sourceTree = "<group>"; };
+		BE6D5773261D188300F44B8D /* normal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = normal.c; sourceTree = "<group>"; };
+		BE6D5774261D188300F44B8D /* sweep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweep.h; sourceTree = "<group>"; };
+		BE6D5775261D188300F44B8D /* mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mesh.h; sourceTree = "<group>"; };
+		BE6D5776261D188300F44B8D /* glu-mesa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "glu-mesa.h"; sourceTree = "<group>"; };
+		BE6D5777261D188300F44B8D /* memalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memalloc.h; sourceTree = "<group>"; };
+		BE6D5778261D188300F44B8D /* priorityq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = priorityq.h; sourceTree = "<group>"; };
+		BE6D5779261D188300F44B8D /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dict.c; sourceTree = "<group>"; };
+		BE6D577A261D188300F44B8D /* geom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = geom.c; sourceTree = "<group>"; };
+		BE6D577B261D188300F44B8D /* dict-list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "dict-list.h"; sourceTree = "<group>"; };
+		BE6D577C261D188300F44B8D /* tessmono.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tessmono.c; sourceTree = "<group>"; };
+		BE6D577D261D188300F44B8D /* priorityq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = priorityq.c; sourceTree = "<group>"; };
+		BE6D577E261D188300F44B8D /* dict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dict.h; sourceTree = "<group>"; };
+		BE6D577F261D188300F44B8D /* priorityq-heap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "priorityq-heap.h"; sourceTree = "<group>"; };
+		BE6D5780261D188300F44B8D /* priorityq-heap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "priorityq-heap.c"; sourceTree = "<group>"; };
+		BE6D5781261D188300F44B8D /* sweep.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sweep.c; sourceTree = "<group>"; };
+		BE6D5782261D188300F44B8D /* tessmono.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tessmono.h; sourceTree = "<group>"; };
+		BE6D5783261D188300F44B8D /* priorityq-sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "priorityq-sort.h"; sourceTree = "<group>"; };
+		BE6D5784261D188300F44B8D /* tess.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tess.c; sourceTree = "<group>"; };
+		BE6D5785261D188300F44B8D /* render.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = render.c; sourceTree = "<group>"; };
 		BE6FD690076B88A800587852 /* GLTextureManager.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = GLTextureManager.h; sourceTree = "<group>"; };
 		BE6FD691076B88A800587852 /* GLTextureManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; path = GLTextureManager.cpp; sourceTree = "<group>"; };
 		BE7033FC132D30B700C0056D /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = System/Library/Frameworks/AGL.framework; sourceTree = SDKROOT; };
@@ -928,14 +935,13 @@
 				BE499C950F145E950060DF4E /* xcode-configs */,
 				08FB77ACFE841707C02AAC07 /* Source */,
 				AB83B5D5055E72B90034F56A /* Includes */,
-				0867D69AFE84028FC02AAC07 /* External Frameworks */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DDFF38A45A11DB9C8B /* Products */,
-				BE5EE944261934840049B72A /* Frameworks */,
 			);
 			name = Quesa;
 			sourceTree = "<group>";
 		};
-		0867D69AFE84028FC02AAC07 /* External Frameworks */ = {
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				BE7033FC132D30B700C0056D /* AGL.framework */,
@@ -943,32 +949,42 @@
 				BE703428132D326300C0056D /* Carbon.framework */,
 				BE7034EC132D32BD00C0056D /* Cocoa.framework */,
 			);
-			name = "External Frameworks";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		08FB77ACFE841707C02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				BE6D56FA261D041900F44B8D /* Tessellation from Mesa glu */,
+				55BD63172803FD4F00CDEA64 /* Swift */,
 				AB3A7B83055E63B100CA83BE /* Core */,
 				AB3A7C17055E63B100CA83BE /* Renderers */,
 				AB3A7C48055E63B100CA83BE /* FileFormats */,
 				AB83B949055E77870034F56A /* Platform */,
 			);
 			name = Source;
+			path = ../../Source;
+			sourceTree = "<group>";
+		};
+		55BD63172803FD4F00CDEA64 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				55BD63182803FDF700CDEA64 /* QMath.swift */,
+				55BD63192803FDF700CDEA64 /* QTypes.swift */,
+			);
+			path = Swift;
 			sourceTree = "<group>";
 		};
 		AB3A7B83055E63B100CA83BE /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				BE6D56FA261D041900F44B8D /* Tessellation from Mesa glu */,
 				AB3A7B84055E63B100CA83BE /* Geometry */,
 				AB3A7BB1055E63B100CA83BE /* Glue */,
 				AB3A7BC9055E63B100CA83BE /* Support */,
 				AB3A7BE2055E63B100CA83BE /* System */,
 			);
-			name = Core;
-			path = ../../Source/Core;
-			sourceTree = SOURCE_ROOT;
+			path = Core;
+			sourceTree = "<group>";
 		};
 		AB3A7B84055E63B100CA83BE /* Geometry */ = {
 			isa = PBXGroup;
@@ -1144,9 +1160,8 @@
 				AB3A7C22055E63B100CA83BE /* Generic */,
 				BE7F269C0B7BB92C00933ED1 /* OpenGL */,
 			);
-			name = Renderers;
-			path = ../../Source/Renderers;
-			sourceTree = SOURCE_ROOT;
+			path = Renderers;
+			sourceTree = "<group>";
 		};
 		AB3A7C18055E63B100CA83BE /* Common */ = {
 			isa = PBXGroup;
@@ -1198,9 +1213,8 @@
 				AB3A7C4B055E63B100CA83BE /* Readers */,
 				AB3A7C55055E63B100CA83BE /* Writers */,
 			);
-			name = FileFormats;
-			path = ../../Source/FileFormats;
-			sourceTree = SOURCE_ROOT;
+			path = FileFormats;
+			sourceTree = "<group>";
 		};
 		AB3A7C4B055E63B100CA83BE /* Readers */ = {
 			isa = PBXGroup;
@@ -1294,13 +1308,13 @@
 				BEFFD7CE0C4C86E100202EA8 /* Cocoa */,
 				AB83B959055E77870034F56A /* Mac */,
 			);
-			name = Platform;
-			path = ../../Source/Platform;
-			sourceTree = SOURCE_ROOT;
+			path = Platform;
+			sourceTree = "<group>";
 		};
 		AB83B959055E77870034F56A /* Mac */ = {
 			isa = PBXGroup;
 			children = (
+				55BD631E2803FEB300CDEA64 /* Quesa.modulemap */,
 				AB83B95B055E77870034F56A /* E3MacDebug.cpp */,
 				AB83B965055E77870034F56A /* E3MacSystem.cpp */,
 				BE98E73A09F764A60040CE1B /* E3CocoaStackCrawl.cpp */,
@@ -1325,13 +1339,6 @@
 			);
 			path = "xcode-configs";
 			sourceTree = SOURCE_ROOT;
-		};
-		BE5EE944261934840049B72A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
 		};
 		BE6D56FA261D041900F44B8D /* Tessellation from Mesa glu */ = {
 			isa = PBXGroup;
@@ -1365,7 +1372,8 @@
 				BE6D5782261D188300F44B8D /* tessmono.h */,
 			);
 			name = "Tessellation from Mesa glu";
-			sourceTree = "<group>";
+			path = "../../Source/Core/glu tessellation from Mesa";
+			sourceTree = SOURCE_ROOT;
 		};
 		BE7F26690B7BB8AD00933ED1 /* MakeStrip */ = {
 			isa = PBXGroup;
@@ -1582,6 +1590,12 @@
 			attributes = {
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					8D07F2BC0486CC7A007CD1D0 = {
+						LastSwiftMigration = 1330;
+					};
+					BE5EE87226191CF90049B72A = {
+						LastSwiftMigration = 1330;
+					};
 					BEB0612622A02A5D00B494D6 = {
 						CreatedOnToolsVersion = 10.2.1;
 						ProvisioningStyle = Automatic;
@@ -1644,6 +1658,7 @@
 				AB3A7CAC055E63B200CA83BE /* E3GeometryDisk.cpp in Sources */,
 				AB3A7CAE055E63B200CA83BE /* E3GeometryEllipse.cpp in Sources */,
 				AB3A7CB0055E63B200CA83BE /* E3GeometryEllipsoid.cpp in Sources */,
+				55BD631C2803FDF700CDEA64 /* QTypes.swift in Sources */,
 				BE6D5794261D188300F44B8D /* normal.c in Sources */,
 				AB3A7CB2055E63B200CA83BE /* E3GeometryGeneralPolygon.cpp in Sources */,
 				AB3A7CB4055E63B200CA83BE /* E3GeometryLine.cpp in Sources */,
@@ -1661,6 +1676,7 @@
 				AB3A7CC8055E63B200CA83BE /* E3GeometryTorus.cpp in Sources */,
 				AB3A7CCA055E63B200CA83BE /* E3GeometryTriangle.cpp in Sources */,
 				AB3A7CCC055E63B200CA83BE /* E3GeometryTriGrid.cpp in Sources */,
+				55BD631A2803FDF700CDEA64 /* QMath.swift in Sources */,
 				AB3A7CCE055E63B200CA83BE /* E3GeometryTriMesh.cpp in Sources */,
 				AB3A7CD0055E63B200CA83BE /* QD3DCamera.cpp in Sources */,
 				AB3A7CD2055E63B200CA83BE /* QD3DCustomElements.cpp in Sources */,
@@ -1957,6 +1973,7 @@
 				BE5EE8AC26191CF90049B72A /* QD3DGeometry.cpp in Sources */,
 				BE5EE8AD26191CF90049B72A /* QD3DGroup.cpp in Sources */,
 				BE5EE8AE26191CF90049B72A /* QD3DIO.cpp in Sources */,
+				55BD631B2803FDF700CDEA64 /* QMath.swift in Sources */,
 				BE5EE8B026191CF90049B72A /* QD3DLight.cpp in Sources */,
 				BE5EE8B126191CF90049B72A /* QD3DMain.cpp in Sources */,
 				BE5EE93D261921980049B72A /* StripMaker_FindAdjacencies.cpp in Sources */,
@@ -1964,6 +1981,7 @@
 				BE5EE93C261921980049B72A /* StripMaker_JoinStrips.cpp in Sources */,
 				BE5EE8B326191CF90049B72A /* QD3DMemory.cpp in Sources */,
 				BE5EE8B426191CF90049B72A /* QD3DPick.cpp in Sources */,
+				55BD631D2803FDF700CDEA64 /* QTypes.swift in Sources */,
 				BE5EE8B526191CF90049B72A /* QD3DRenderer.cpp in Sources */,
 				BE5EE8B626191CF90049B72A /* QD3DSet.cpp in Sources */,
 				BE6D57A3261D188300F44B8D /* geom.c in Sources */,
@@ -2161,17 +2179,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE5EE86E26191CD60049B72A /* Framework-NoOpenGL.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"Q3_EXPORT_SYMBOLS=1",
 					"Q3_VALIDATE_DRAW_ELEMENTS=1",
 				);
 				GCC_WARN_PROTOTYPE_CONVERSION = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = ../../Source/Platform/Mac/Quesa.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = org.Quesa.Quesa;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -2179,10 +2203,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE5EE86E26191CD60049B72A /* Framework-NoOpenGL.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEFINES_MODULE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = ../../Source/Platform/Mac/Quesa.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = org.Quesa.Quesa;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -2220,17 +2249,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE499C9A0F145E950060DF4E /* Quesa-framework.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"Q3_EXPORT_SYMBOLS=1",
 					"Q3_VALIDATE_DRAW_ELEMENTS=1",
 				);
 				GCC_WARN_PROTOTYPE_CONVERSION = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = ../../Source/Platform/Mac/Quesa.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = org.Quesa.Quesa;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -2238,10 +2273,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE499C9A0F145E950060DF4E /* Quesa-framework.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEFINES_MODULE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = ../../Source/Platform/Mac/Quesa.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = org.Quesa.Quesa;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

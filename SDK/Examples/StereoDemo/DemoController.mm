@@ -65,7 +65,7 @@
 #import "Quesa3DView.h"
 #import "DemoGeometry.h"
 
-enum
+NS_ENUM(NSInteger)
 {
 	kMenuItemGeometryBox = 1,
 	kMenuItemGeometryCone,
@@ -178,7 +178,7 @@ static void SetColorMask( const ColorMask& inMask )
 {
 	if ( (self = [super init]) != nil )
 	{
-		TQ3Int32				glAttributes[] =
+		NSOpenGLPixelFormatAttribute	glAttributes[] =
 		{
 			NSOpenGLPFADoubleBuffer,
 			NSOpenGLPFADepthSize, 24,
@@ -205,6 +205,7 @@ static void SetColorMask( const ColorMask& inMask )
 
 - (void) dealloc
 {
+	[mAnimationTimer invalidate];
 	[mAnimationTimer release];
 	[mPixelFormat release];
 	
@@ -550,8 +551,8 @@ static void SetColorMask( const ColorMask& inMask )
 	
 	NSPoint windowCoordOrigin = [quesa3dView convertPoint: NSZeroPoint toView: nil];
 	NSPoint screenCoordOrigin = [[quesa3dView window]
-		convertBaseToScreen: windowCoordOrigin ];
-	int yCoord = ::lround( screenCoordOrigin.y );
+								 convertPointToScreen: windowCoordOrigin ];
+	long yCoord = ::lround( screenCoordOrigin.y );
 	BOOL isEvenBase = ((yCoord % 2) == 0);
 	BOOL useEvenOnRight = [self leftRightFormat] == kLeftRightFormat_OddEven;
 	if (isEvenBase == useEvenOnRight)
@@ -657,10 +658,7 @@ static void SetColorMask( const ColorMask& inMask )
 //	animates
 //==================================================================================
 
-- (BOOL) animates
-{
-	return mAnimates;
-}
+@synthesize animates=mAnimates;
 
 //==================================================================================
 //	setAnimates:
@@ -694,10 +692,7 @@ static void SetColorMask( const ColorMask& inMask )
 //	drawsShadows
 //==================================================================================
 
-- (BOOL) drawsShadows
-{
-	return mDrawsShadows;
-}
+@synthesize drawsShadows=mDrawsShadows;
 
 //==================================================================================
 //	setDrawsShadows:
@@ -745,10 +740,7 @@ static void SetColorMask( const ColorMask& inMask )
 //	fullScreenAntialias
 //==================================================================================
 
-- (BOOL) fullScreenAntialias
-{
-	return mFullScreenAntialias;
-}
+@synthesize fullScreenAntialias=mFullScreenAntialias;
 
 //==================================================================================
 //	setFullScreenAntialias:
@@ -794,10 +786,7 @@ static void SetColorMask( const ColorMask& inMask )
 //	rendererType
 //==================================================================================
 
-- (TQ3ObjectType) rendererType
-{
-	return mRendererType;
-}
+@synthesize rendererType=mRendererType;
 
 //==================================================================================
 //	setRendererType:
@@ -819,10 +808,7 @@ static void SetColorMask( const ColorMask& inMask )
 //	xRotation
 //==================================================================================
 
-- (float) xRotation
-{
-	return mXRotation;
-}
+@synthesize xRotation=mXRotation;
 
 //==================================================================================
 //	setXRotation:
@@ -838,10 +824,7 @@ static void SetColorMask( const ColorMask& inMask )
 //	yRotation
 //==================================================================================
 
-- (float) yRotation
-{
-	return mYRotation;
-}
+@synthesize yRotation=mYRotation;
 
 //==================================================================================
 //	setYRotation:
@@ -857,10 +840,7 @@ static void SetColorMask( const ColorMask& inMask )
 //	zRotation
 //==================================================================================
 
-- (float) zRotation
-{
-	return mZRotation;
-}
+@synthesize zRotation=mZRotation;
 
 //==================================================================================
 //	setZRotation:
@@ -872,10 +852,7 @@ static void SetColorMask( const ColorMask& inMask )
 	[self updateManualRotation];
 }
 
-- (float) projectionDistance
-{
-	return mProjectionDistance;
-}
+@synthesize projectionDistance=mProjectionDistance;
 
 - (void) setProjectionDistance: (float) distance
 {
@@ -883,10 +860,7 @@ static void SetColorMask( const ColorMask& inMask )
 	[quesa3dView setNeedsDisplay:YES];
 }
 
-- (float) separationDistance
-{
-	return mSeparationDistance;
-}
+@synthesize separationDistance=mSeparationDistance;
 
 - (void) setSeparationDistance: (float) distance
 {
@@ -894,10 +868,7 @@ static void SetColorMask( const ColorMask& inMask )
 	[quesa3dView setNeedsDisplay:YES];
 }
 
-- (ELeftRightFormat) leftRightFormat
-{
-	return mLeftRightFormat;
-}
+@synthesize leftRightFormat=mLeftRightFormat;
 
 - (void) setLeftRightFormat: (ELeftRightFormat) format
 {
@@ -912,9 +883,9 @@ static void SetColorMask( const ColorMask& inMask )
 //	setGeometryFromTag
 //==================================================================================
 
--(void)setGeometryFromTag:(id)sender
+-(IBAction)setGeometryFromTag:(id)sender
 {
-  int tagVal = [[sender selectedItem]tag];
+  NSInteger tagVal = [[sender selectedItem] tag];
   TQ3GeometryObject theGeom = NULL;
   
   switch(tagVal)

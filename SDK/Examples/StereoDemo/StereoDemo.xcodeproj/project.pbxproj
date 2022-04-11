@@ -185,9 +185,9 @@
 		33CEB99F0055FFC57F000001 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				2D6A02D3FF1986E17F000001 /* QuesaCocoaUtil.h */,
 				17327D4CFF18F4807F000001 /* DemoController.h */,
 				1E8954ACFF1927E77F000001 /* DemoGeometry.h */,
+				2D6A02D3FF1986E17F000001 /* QuesaCocoaUtil.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -195,8 +195,8 @@
 		33CEB9A00055FFC57F000001 /* Quesa3DView */ = {
 			isa = PBXGroup;
 			children = (
-				2179FF09FF19522C7F000001 /* Quesa3DView.m */,
 				2179FF0AFF19522C7F000001 /* Quesa3DView.h */,
+				2179FF09FF19522C7F000001 /* Quesa3DView.m */,
 			);
 			name = Quesa3DView;
 			sourceTree = "<group>";
@@ -468,11 +468,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.quesa.StereoDemo;
 			};
 			name = Debug;
 		};
@@ -480,6 +476,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.quesa.StereoDemo;
 			};
 			name = Release;
 		};

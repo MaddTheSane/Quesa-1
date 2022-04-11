@@ -42,10 +42,9 @@
 */
 #import <Cocoa/Cocoa.h>
 #include <Quesa/Quesa.h>
+#import "Quesa3DView.h"
 
-@class Quesa3DView;
-
-typedef enum
+typedef NS_ENUM(NSInteger, ELeftRightFormat)
 {
 	kLeftRightFormat_RedCyan = 1,
 	kLeftRightFormat_GreenMagenta,
@@ -56,7 +55,7 @@ typedef enum
 	
 	kLeftRightFormat_EvenOdd,
 	kLeftRightFormat_OddEven
-} ELeftRightFormat;
+};
 
 
 /*!
@@ -67,7 +66,7 @@ typedef enum
 	@discussion	Most of the window controls are set up using bindings rather
 				than action methods.
 */
-@interface DemoController : NSObject
+@interface DemoController : NSObject <Quesa3DViewDelegate>
 {
 	IBOutlet Quesa3DView*		quesa3dView;
 	IBOutlet NSPopUpButton*		rendererMenu;
@@ -95,38 +94,27 @@ typedef enum
 	TQ3CameraObject		mViewPlaneCamera;
 }
 
-- (BOOL) drawsShadows;
-- (void) setDrawsShadows: (BOOL) shadows;
+@property (nonatomic) BOOL drawsShadows;
 
-- (BOOL) animates;
-- (void) setAnimates: (BOOL) animate;
+@property (nonatomic) BOOL animates;
 
-- (BOOL) drawsBounds;
-- (void) setDrawsBounds: (BOOL) bounds;
+@property (nonatomic) BOOL drawsBounds;
 
-- (BOOL) fullScreenAntialias;
-- (void) setFullScreenAntialias: (BOOL) antialias;
+@property (nonatomic) BOOL fullScreenAntialias;
 
-- (TQ3ObjectType) rendererType;
-- (void) setRendererType: (TQ3ObjectType) rendererType;
+@property (nonatomic) TQ3ObjectType rendererType;
 
-- (float) xRotation;
-- (void) setXRotation: (float) angleDegrees;
+@property (nonatomic) float xRotation;
 
-- (float) yRotation;
-- (void) setYRotation: (float) angleDegrees;
+@property (nonatomic) float yRotation;
 
-- (float) zRotation;
-- (void) setXRotation: (float) angleDegrees;
+@property (nonatomic) float zRotation;
 
-- (float) projectionDistance;
-- (void) setProjectionDistance: (float) distance;
+@property (nonatomic) float projectionDistance;
 
-- (float) separationDistance;
-- (void) setSeparationDistance: (float) distance;
+@property (nonatomic) float separationDistance;
 
-- (ELeftRightFormat) leftRightFormat;
-- (void) setLeftRightFormat: (ELeftRightFormat) format;
+@property (nonatomic) ELeftRightFormat leftRightFormat;
 
 - (IBAction)setGeometryFromTag:(id)sender;
 @end

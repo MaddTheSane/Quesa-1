@@ -13,4 +13,22 @@
    <FileRef
       location = "group:SDK/Examples/StereoDemo/StereoDemo.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:SDK/Extras/Cocoa Example/Quesa3DView/Quesa3DView.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SDK/Extras/Binify3DMF/Binify3DMF.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SDK/Extras/3DS-FileSupport/Projects/3DS-FileSupport.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SDK/Extras/Rayshade/Projects/MacOS/Rayshade.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SDK/Extras/Textify3DMF/Textify3DMF.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SDK/Extras/VRML Reader/Projects/VRML-Reader.xcodeproj">
+   </FileRef>
 </Workspace>

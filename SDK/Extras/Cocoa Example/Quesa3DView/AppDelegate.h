@@ -43,8 +43,7 @@
 #import <Cocoa/Cocoa.h>
 #import <Quesa/Quesa.h>
 #import <Quesa/QuesaStyle.h>
-
-@class Quesa3DView;
+#import "Quesa3DView.h"
 
 
 
@@ -59,7 +58,7 @@
 				Most of the window controls are set up using bindings rather
 				than action methods.
 */
-@interface AppDelegate : NSObject
+@interface AppDelegate : NSObject <Quesa3DViewDelegate>
 {
 	IBOutlet Quesa3DView*		quesa3dView;
 	IBOutlet NSPopUpButton*		rendererMenu;

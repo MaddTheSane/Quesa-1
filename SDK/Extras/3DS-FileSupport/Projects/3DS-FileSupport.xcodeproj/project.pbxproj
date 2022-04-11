@@ -38,6 +38,8 @@
 			isa = PBXBuildRule;
 			compilerSpec = com.apple.compilers.gcc;
 			fileType = sourcecode.c;
+			inputFiles = (
+			);
 			isEditable = 1;
 			outputFiles = (
 			);
@@ -46,6 +48,8 @@
 			isa = PBXBuildRule;
 			compilerSpec = com.apple.compilers.gcc;
 			fileType = sourcecode.cpp;
+			inputFiles = (
+			);
 			isEditable = 1;
 			outputFiles = (
 			);
@@ -53,6 +57,20 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
+		55BD63382804115600CDEA64 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B11570CD0CCB3523003BB66E /* Quesa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BE5EE91626191CF90049B72A;
+			remoteInfo = FrameworkNoGL;
+		};
+		55BD633A2804115600CDEA64 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B11570CD0CCB3523003BB66E /* Quesa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BE5EE9E126195C8A0049B72A;
+			remoteInfo = "Static NoGL";
+		};
 		B11570D40CCB3523003BB66E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B11570CD0CCB3523003BB66E /* Quesa.xcodeproj */;
@@ -187,7 +205,9 @@
 			isa = PBXGroup;
 			children = (
 				B11570D50CCB3523003BB66E /* Quesa.framework */,
+				55BD63392804115600CDEA64 /* Quesa.framework */,
 				B11570D90CCB3523003BB66E /* libQuesa.a */,
+				55BD633B2804115600CDEA64 /* libQuesa.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -267,6 +287,8 @@
 /* Begin PBXProject section */
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = BEC95CB308A86B3C001E16B9 /* Build configuration list for PBXProject "3DS-FileSupport" */;
 			compatibilityVersion = "Xcode 3.0";
 			developmentRegion = English;
@@ -293,6 +315,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		55BD63392804115600CDEA64 /* Quesa.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Quesa.framework;
+			remoteRef = 55BD63382804115600CDEA64 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		55BD633B2804115600CDEA64 /* libQuesa.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libQuesa.a;
+			remoteRef = 55BD633A2804115600CDEA64 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		B11570D50CCB3523003BB66E /* Quesa.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -363,14 +399,11 @@
 		BE7C488308AF202E00559F64 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = "3DS-Support";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -389,7 +422,9 @@
 					"$(GCC_PREPROCESSOR_DEFINITIONS)",
 					"DEBUG=1",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "3DS-Support";
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};

@@ -11,14 +11,12 @@ import Quesa.QuesaMath
 // MARK: - Unary minus
 
 /// vector = - vector (unary minus)
-public prefix func -(inVec: TQ3Vector3D) -> TQ3Vector3D
-{
+public prefix func -(inVec: TQ3Vector3D) -> TQ3Vector3D {
 	return TQ3Vector3D(x: -inVec.x, y: -inVec.y, z: -inVec.z)
 }
 
 /// vector = - vector (unary minus)
-public prefix func -(inVec: TQ3Vector2D) -> TQ3Vector2D
-{
+public prefix func -(inVec: TQ3Vector2D) -> TQ3Vector2D {
 	return TQ3Vector2D(x: -inVec.x, y: -inVec.y)
 }
 
@@ -26,8 +24,7 @@ public prefix func -(inVec: TQ3Vector2D) -> TQ3Vector2D
 // MARK: - Scalar Multiplication
 
 /// vector `=` scalar `*` vector
-public func *(_ inScalar: Float, _ inVec: TQ3Vector3D) -> TQ3Vector3D
-{
+public func *(_ inScalar: Float, _ inVec: TQ3Vector3D) -> TQ3Vector3D {
 	return TQ3Vector3D(x: inVec.x * inScalar, y: inVec.y * inScalar, z: inVec.z * inScalar)
 }
 
@@ -37,8 +34,7 @@ public func *(_ inVec: TQ3Vector3D, _ inScalar: Float) -> TQ3Vector3D {
 }
 
 /// vector `=` scalar `*` vector
-public func *(_ inScalar: Float, _ inVec: TQ3Vector2D) -> TQ3Vector2D
-{
+public func *(_ inScalar: Float, _ inVec: TQ3Vector2D) -> TQ3Vector2D {
 	return TQ3Vector2D(x: inVec.x * inScalar, y: inVec.y * inScalar)
 }
 
@@ -48,29 +44,25 @@ public func *(_ inVec: TQ3Vector2D, _ inScalar: Float) -> TQ3Vector2D {
 }
 
 /// vector `*=` scalar
-public func *=(ioA: inout TQ3Vector3D, inScalar: Float )
-{
+public func *=(ioA: inout TQ3Vector3D, inScalar: Float) {
 	let ioB = inScalar * ioA
 	ioA = ioB
 }
 
 /// vector `*=` scalar
-public func *=(ioA: inout TQ3Vector2D, inScalar: Float )
-{
+public func *=(ioA: inout TQ3Vector2D, inScalar: Float) {
 	let ioB = inScalar * ioA
 	ioA = ioB
 }
 
 
 /// point `=` scalar `*` point (not usual in math, but useful in 3D computing)
-public func *( _ inScalar: Float, inVec:  TQ3Point3D ) -> TQ3Point3D
-{
+public func *( _ inScalar: Float, inVec:  TQ3Point3D ) -> TQ3Point3D {
 	return TQ3Point3D(x: inVec.x * inScalar, y: inVec.y * inScalar, z: inVec.z * inScalar)
 }
 
 /// point `=` scalar `*` point (not usual in math, but useful in 3D computing)
-public func *( _ inScalar: Float, _ inVec: TQ3Point2D ) -> TQ3Point2D
-{
+public func *( _ inScalar: Float, _ inVec: TQ3Point2D ) -> TQ3Point2D {
 	return TQ3Point2D(x: inVec.x * inScalar, y: inVec.y * inScalar)
 }
 
@@ -78,20 +70,17 @@ public func *( _ inScalar: Float, _ inVec: TQ3Point2D ) -> TQ3Point2D
 // MARK: - Additive Operations
 
 /// pt = pt + vector
-public func +(_ inPt2: TQ3Point3D, _ inVec2: TQ3Vector3D  ) -> TQ3Point3D
-{
+public func +(_ inPt2: TQ3Point3D, _ inVec2: TQ3Vector3D  ) -> TQ3Point3D {
 	return TQ3Point3D(x: inPt2.x + inVec2.x, y: inPt2.y + inVec2.y, z: inPt2.z + inVec2.z)
 }
 
 /// pt = pt + vector [2D]
-public func +(_ inPt2: TQ3Point2D, _ inVec2: TQ3Vector2D) -> TQ3Point2D
-{
+public func +(_ inPt2: TQ3Point2D, _ inVec2: TQ3Vector2D) -> TQ3Point2D {
 	return TQ3Point2D(x: inPt2.x + inVec2.x, y: inPt2.y + inVec2.y)
 }
 
 /// pt = pt - vector
-public func -(_ inPt2: TQ3Point3D, _ inVec2: TQ3Vector3D) -> TQ3Point3D
-{
+public func -(_ inPt2: TQ3Point3D, _ inVec2: TQ3Vector3D) -> TQ3Point3D {
 	let rx = (inPt2).x - (inVec2).x
 	let ry = (inPt2).y - (inVec2).y
 	let rz = (inPt2).z - (inVec2).z
@@ -100,31 +89,13 @@ public func -(_ inPt2: TQ3Point3D, _ inVec2: TQ3Vector3D) -> TQ3Point3D
 }
 
 /// pt = pt - vector [2D]
-public func -(_ inPt2: TQ3Point2D, _ inVec2: TQ3Vector2D) -> TQ3Point2D
-{
+public func -(_ inPt2: TQ3Point2D, _ inVec2: TQ3Vector2D) -> TQ3Point2D {
 	let rx = (inPt2).x - (inVec2).x;
 	let ry = (inPt2).y - (inVec2).y;
 
 	return TQ3Point2D(x: rx, y: ry)
 }
 
-/*
-// vector = pt - pt
-inline TQ3Vector3D operator-( const TQ3Point3D& inA, const TQ3Point3D& inB )
-{
-TQ3Vector3D result;
-Q3FastPoint3D_Subtract( &inA, &inB, &result );
-return result;
-}
-
-// vector = pt - pt [2D]
-inline TQ3Vector2D operator-( const TQ3Point2D& inA, const TQ3Point2D& inB )
-{
-TQ3Vector2D result;
-Q3FastPoint2D_Subtract( &inA, &inB, &result );
-return result;
-}
-*/
 /// vector = vector + vector
 public func + (_ inAa: TQ3Vector3D, _ inBa: TQ3Vector3D) -> TQ3Vector3D {
 	return TQ3Vector3D(x: inAa.x + inBa.x, y: inAa.y + inBa.y, z: inAa.z + inBa.z)
@@ -160,8 +131,7 @@ public func -=(_ ioA: inout TQ3Vector3D, _ inBa: TQ3Vector3D) {
 }
 
 /// pt += vector
-public func +=(_ ioA: inout TQ3Point3D, _ inBa: TQ3Vector3D)
-{
+public func +=(_ ioA: inout TQ3Point3D, _ inBa: TQ3Vector3D) {
 	ioA.x += inBa.x
 	ioA.y += inBa.y
 	ioA.z += inBa.z
@@ -195,8 +165,7 @@ public func *(_ inMata: TQ3Matrix4x4, _ inMat2a: TQ3Matrix4x4) -> TQ3Matrix4x4 {
 }
 
 /// matrix `*=` matrix
-public func *=(_ ioMat: inout TQ3Matrix4x4 , _ inMat2a: TQ3Matrix4x4)
-{
+public func *=(_ ioMat: inout TQ3Matrix4x4 , _ inMat2a: TQ3Matrix4x4) {
 	var io = TQ3Matrix4x4(); var inMat2 = inMat2a;
 	Q3Matrix4x4_Multiply( &ioMat, &inMat2, &io )
 	ioMat = io
@@ -241,6 +210,30 @@ Q3Vector3D_Transform( &ioVec, &inMat, &ioVec );
 return ioVec;
 }
 */
+
+extension TQ3Matrix4x4: Equatable {
+	/// Exact equality (is this what you really want?) of 4x4 matrices
+	///
+	/// Note that this differs from SIMD's `==`.
+	@inlinable public static func == (one: TQ3Matrix4x4, two: TQ3Matrix4x4) -> Bool {
+		return one.value.0.0 == two.value.0.0 &&
+		(one.value.0.1 == two.value.0.1) &&
+		(one.value.0.2 == two.value.0.2) &&
+		(one.value.0.3 == two.value.0.3) &&
+		(one.value.1.0 == two.value.1.0) &&
+		(one.value.1.1 == two.value.1.1) &&
+		(one.value.1.2 == two.value.1.2) &&
+		(one.value.1.3 == two.value.1.3) &&
+		(one.value.2.0 == two.value.2.0) &&
+		(one.value.2.1 == two.value.2.1) &&
+		(one.value.2.2 == two.value.2.2) &&
+		(one.value.2.3 == two.value.2.3) &&
+		(one.value.3.0 == two.value.3.0) &&
+		(one.value.3.1 == two.value.3.1) &&
+		(one.value.3.2 == two.value.3.2) &&
+		(one.value.3.3 == two.value.3.3)
+	}
+}
 
 // MARK: - Common Functions
 

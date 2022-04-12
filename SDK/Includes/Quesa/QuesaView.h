@@ -52,10 +52,10 @@
 //=============================================================================
 //      Include files
 //-----------------------------------------------------------------------------
-#include "Quesa.h"
+#include <Quesa/Quesa.h>
 
-#include "QuesaStyle.h"
-#include "QuesaSet.h"
+#include <Quesa/QuesaStyle.h>
+#include <Quesa/QuesaSet.h>
 
 // Disable QD3D header
 #ifdef __QD3DVIEW__

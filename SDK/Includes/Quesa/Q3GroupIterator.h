@@ -43,9 +43,9 @@
 #ifndef Q3GROUPITERATOR_HDR
 #define Q3GROUPITERATOR_HDR
 
-#include "Quesa.h"
-#include "CQ3ObjectRef.h"
-#include "QuesaGroup.h"
+#include <Quesa/Quesa.h>
+#include <Quesa/CQ3ObjectRef.h>
+#include <Quesa/QuesaGroup.h>
 
 
 /*!

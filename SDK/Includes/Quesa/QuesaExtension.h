@@ -52,8 +52,8 @@
 //=============================================================================
 //      Include files
 //-----------------------------------------------------------------------------
-#include "Quesa.h"
-#include "QuesaErrors.h"
+#include <Quesa/Quesa.h>
+#include <Quesa/QuesaErrors.h>
 
 // Disable QD3D header
 #if defined(__QD3DEXTENSION__)

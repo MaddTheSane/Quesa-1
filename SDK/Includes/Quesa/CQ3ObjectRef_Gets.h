@@ -53,14 +53,14 @@
 #ifndef	CQ3OBJECTREFGETS_HDR
 #define	CQ3OBJECTREFGETS_HDR
 
-#include "Quesa.h"
-#include "QuesaGeometry.h"
-#include "QuesaGroup.h"
-#include "QuesaIO.h"
-#include "QuesaShader.h"
-#include "QuesaStyle.h"
-#include "QuesaView.h"
-#include "CQ3ObjectRef.h"
+#include <Quesa/Quesa.h>
+#include <Quesa/QuesaGeometry.h>
+#include <Quesa/QuesaGroup.h>
+#include <Quesa/QuesaIO.h>
+#include <Quesa/QuesaShader.h>
+#include <Quesa/QuesaStyle.h>
+#include <Quesa/QuesaView.h>
+#include <Quesa/CQ3ObjectRef.h>
 
 #pragma mark Functions from Quesa.h
 /*!

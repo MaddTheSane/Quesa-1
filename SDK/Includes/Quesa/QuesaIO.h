@@ -98,11 +98,11 @@ if (theStorage.isvalid())
 //=============================================================================
 //      Include files
 //-----------------------------------------------------------------------------
-#include "Quesa.h"
+#include <Quesa/Quesa.h>
 
-#include "QuesaDrawContext.h"
-#include "QuesaView.h"
-#include "QuesaRenderer.h"
+#include <Quesa/QuesaDrawContext.h>
+#include <Quesa/QuesaView.h>
+#include <Quesa/QuesaRenderer.h>
 
 // Disable QD3D header
 #ifdef __QD3DIO__

@@ -308,49 +308,49 @@ class AppDelegate: NSObject, NSApplicationDelegate, QD3DViewDelegate {
 		case .box:
 			theGeom = createGeomBox()
 		case .cone:
-			theGeom = createGeomCone();
+			theGeom = createGeomCone()
 		case .cylinder:
-			theGeom = createGeomCylinder();
+			theGeom = createGeomCylinder()
 		case .disk:
-			theGeom = createGeomDisk();
+			theGeom = createGeomDisk()
 		case .ellipse:
-			theGeom = createGeomEllipse();
+			theGeom = createGeomEllipse()
 		case .ellipsoid:
 			theGeom = createGeomEllipsoid()
 		case .generalPolygon:
-			theGeom = createGeomGeneralPolygon();
+			theGeom = createGeomGeneralPolygon()
 		case .line:
-			theGeom = createGeomLine();
+			theGeom = createGeomLine()
 		case .marker:
-			theGeom = createGeomMarker();
+			theGeom = createGeomMarker()
 		case .mesh:
-			theGeom = createGeomMesh();
+			theGeom = createGeomMesh()
 		case .NURBCurve:
-			theGeom = createGeomNURBCurve();
+			theGeom = createGeomNURBCurve()
 		case .NURBPatch:
-			theGeom = createGeomNURBPatch();
+			theGeom = createGeomNURBPatch()
 		case .pixmapMarker:
-			theGeom = createGeomPixmapMarker();
+			theGeom = createGeomPixmapMarker()
 		case .point:
-			theGeom = createGeomPoint();
+			theGeom = createGeomPoint()
 		case .polyLine:
-			theGeom = createGeomPolyLine();
+			theGeom = createGeomPolyLine()
 		case .polygon:
-			theGeom = createGeomPolygon();
+			theGeom = createGeomPolygon()
 		case .polyhedron:
-			theGeom = createGeomPolyhedron();
+			theGeom = createGeomPolyhedron()
 		case .QuesaLogo:
-			theGeom = createGeomQuesa();
+			theGeom = createGeomQuesa()
 		case .torus:
-			theGeom = createGeomTorus();
+			theGeom = createGeomTorus()
 		case .triangle:
-			theGeom = createGeomTriangle();
+			theGeom = createGeomTriangle()
 		case .triGrid:
-			theGeom = createGeomTriGrid();
+			theGeom = createGeomTriGrid()
 		case .triMesh:
-			theGeom = createGeomTriMesh();
+			theGeom = createGeomTriMesh()
 		case .pastelGroup:
-			theGeom = createPastelGroup();
+			theGeom = createPastelGroup()
 		}
 		
 		// If we created it, replace the current geometry

@@ -25,10 +25,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="147">
-                                    <rect key="frame" x="7" y="104" width="13" height="17"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="17" id="Q6D-6P-C6e"/>
-                                    </constraints>
+                                    <rect key="frame" x="7" y="107" width="13" height="16"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="X" id="397">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -36,7 +33,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="148">
-                                    <rect key="frame" x="7" y="60" width="13" height="18"/>
+                                    <rect key="frame" x="7" y="61" width="13" height="16"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Y" id="398">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -44,7 +41,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="149">
-                                    <rect key="frame" x="7" y="19" width="13" height="16"/>
+                                    <rect key="frame" x="7" y="21" width="13" height="16"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Z" id="399">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -52,7 +49,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="150">
-                                    <rect key="frame" x="27" y="16" width="176" height="27"/>
+                                    <rect key="frame" x="27" y="16" width="176" height="22"/>
                                     <sliderCell key="cell" continuous="YES" alignment="left" maxValue="360" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="400">
                                         <font key="font" size="12" name="Helvetica"/>
                                     </sliderCell>
@@ -66,10 +63,7 @@
                                     </connections>
                                 </slider>
                                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="151">
-                                    <rect key="frame" x="27" y="101" width="176" height="27"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="19" id="lNR-Ov-ops"/>
-                                    </constraints>
+                                    <rect key="frame" x="27" y="97" width="176" height="31"/>
                                     <sliderCell key="cell" continuous="YES" alignment="left" maxValue="360" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="401">
                                         <font key="font" size="12" name="Helvetica"/>
                                     </sliderCell>
@@ -83,10 +77,7 @@
                                     </connections>
                                 </slider>
                                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="152">
-                                    <rect key="frame" x="27" y="58" width="176" height="27"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="19" id="SeZ-nh-ibM"/>
-                                    </constraints>
+                                    <rect key="frame" x="27" y="53" width="176" height="28"/>
                                     <sliderCell key="cell" continuous="YES" alignment="left" maxValue="360" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="402">
                                         <font key="font" size="12" name="Helvetica-Bold"/>
                                     </sliderCell>
@@ -104,22 +95,22 @@
                                 <constraint firstItem="151" firstAttribute="trailing" secondItem="152" secondAttribute="trailing" id="0Fj-LE-QKe"/>
                                 <constraint firstItem="147" firstAttribute="leading" secondItem="GkI-Xl-AaN" secondAttribute="leading" constant="9" id="3Xd-EK-Dek"/>
                                 <constraint firstItem="150" firstAttribute="leading" secondItem="149" secondAttribute="trailing" constant="11" id="3sa-HC-hoM"/>
+                                <constraint firstItem="152" firstAttribute="centerY" secondItem="148" secondAttribute="centerY" id="4T0-fq-9OG"/>
                                 <constraint firstAttribute="trailing" secondItem="151" secondAttribute="trailing" constant="7" id="7mb-k0-Xg0"/>
                                 <constraint firstItem="152" firstAttribute="top" secondItem="151" secondAttribute="bottom" constant="24" id="FMn-E6-BV0"/>
-                                <constraint firstItem="147" firstAttribute="top" secondItem="GkI-Xl-AaN" secondAttribute="top" constant="17" id="S6a-vr-abD"/>
+                                <constraint firstItem="149" firstAttribute="centerY" secondItem="150" secondAttribute="centerY" id="QC3-Ks-7dw"/>
                                 <constraint firstItem="151" firstAttribute="leading" secondItem="147" secondAttribute="trailing" constant="11" id="WpH-T6-J2B"/>
                                 <constraint firstItem="150" firstAttribute="top" secondItem="152" secondAttribute="bottom" constant="23" id="Y4c-yh-KZe"/>
                                 <constraint firstAttribute="bottom" secondItem="150" secondAttribute="bottom" constant="22" id="YKh-GA-Q64"/>
                                 <constraint firstItem="152" firstAttribute="trailing" secondItem="150" secondAttribute="trailing" id="b6b-hp-mky"/>
                                 <constraint firstItem="147" firstAttribute="leading" secondItem="148" secondAttribute="leading" id="eHj-hr-P2q"/>
-                                <constraint firstItem="149" firstAttribute="top" secondItem="148" secondAttribute="bottom" constant="25" id="hdo-UE-7Jj"/>
                                 <constraint firstItem="152" firstAttribute="leading" secondItem="148" secondAttribute="trailing" constant="11" id="lci-q6-BUt"/>
                                 <constraint firstItem="148" firstAttribute="centerY" secondItem="GkI-Xl-AaN" secondAttribute="centerY" id="ohG-Uc-qCt"/>
                                 <constraint firstItem="151" firstAttribute="top" secondItem="GkI-Xl-AaN" secondAttribute="top" constant="12" id="oin-7f-5Ed"/>
                                 <constraint firstItem="148" firstAttribute="leading" secondItem="149" secondAttribute="leading" id="ra1-vl-IJ4"/>
                                 <constraint firstItem="152" firstAttribute="leading" secondItem="150" secondAttribute="leading" id="uJp-9N-pJ2"/>
                                 <constraint firstItem="151" firstAttribute="leading" secondItem="152" secondAttribute="leading" id="xGL-rZ-UkP"/>
-                                <constraint firstItem="148" firstAttribute="top" secondItem="147" secondAttribute="bottom" constant="26" id="zfo-pY-URM"/>
+                                <constraint firstItem="151" firstAttribute="centerY" secondItem="147" secondAttribute="centerY" id="zQv-YS-Dtq"/>
                             </constraints>
                         </view>
                         <font key="titleFont" metaFont="system"/>

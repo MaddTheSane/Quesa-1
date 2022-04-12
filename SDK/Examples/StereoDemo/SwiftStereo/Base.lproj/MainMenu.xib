@@ -12,7 +12,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="SwiftStereo" customModuleProvider="target">
             <connections>
                 <outlet property="objectMenu" destination="iea-AI-s91" id="osU-Kj-nad"/>
@@ -694,16 +694,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box title="Rotation" translatesAutoresizingMaskIntoConstraints="NO" id="3Of-5I-mni">
-                        <rect key="frame" x="534" y="355" width="191" height="159"/>
+                        <rect key="frame" x="534" y="355" width="191" height="161"/>
                         <view key="contentView" id="eIP-hP-b7u">
-                            <rect key="frame" x="3" y="3" width="185" height="139"/>
+                            <rect key="frame" x="3" y="3" width="185" height="141"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="V2n-RM-seZ">
-                                    <rect key="frame" x="7" y="105" width="13" height="17"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="17" id="CDx-fS-Hlb"/>
-                                    </constraints>
+                                    <rect key="frame" x="7" y="111" width="13" height="16"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="X" id="hir-EG-ceu">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -711,7 +708,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="gsE-vM-MVn">
-                                    <rect key="frame" x="7" y="60" width="13" height="19"/>
+                                    <rect key="frame" x="7" y="63" width="13" height="16"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Y" id="kET-bM-57x">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -719,7 +716,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="fo5-k6-psJ">
-                                    <rect key="frame" x="7" y="19" width="13" height="16"/>
+                                    <rect key="frame" x="7" y="24" width="13" height="16"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Z" id="Rgr-ZM-xgR">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -741,10 +738,7 @@
                                     </connections>
                                 </slider>
                                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DPA-WF-EuC">
-                                    <rect key="frame" x="27" y="102" width="153" height="27"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="19" id="fOK-54-N0x"/>
-                                    </constraints>
+                                    <rect key="frame" x="27" y="103" width="153" height="28"/>
                                     <sliderCell key="cell" continuous="YES" alignment="left" maxValue="360" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="Lhc-vn-gQZ">
                                         <font key="font" size="12" name="Helvetica"/>
                                     </sliderCell>
@@ -758,10 +752,7 @@
                                     </connections>
                                 </slider>
                                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gN6-ay-i3E">
-                                    <rect key="frame" x="27" y="59" width="153" height="27"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="19" id="aqz-Rh-RAv"/>
-                                    </constraints>
+                                    <rect key="frame" x="27" y="59" width="153" height="28"/>
                                     <sliderCell key="cell" continuous="YES" alignment="left" maxValue="360" tickMarkPosition="below" numberOfTickMarks="11" sliderType="linear" id="PYA-wP-ayv">
                                         <font key="font" size="12" name="Helvetica-Bold"/>
                                     </sliderCell>
@@ -776,14 +767,14 @@
                                 </slider>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="V2n-RM-seZ" firstAttribute="top" secondItem="eIP-hP-b7u" secondAttribute="top" constant="17" id="2zd-O8-Exr"/>
+                                <constraint firstItem="V2n-RM-seZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eIP-hP-b7u" secondAttribute="top" constant="5" id="2zd-O8-Exr"/>
                                 <constraint firstItem="gN6-ay-i3E" firstAttribute="top" secondItem="DPA-WF-EuC" secondAttribute="bottom" constant="24" id="6Ca-BM-qaY"/>
-                                <constraint firstItem="fo5-k6-psJ" firstAttribute="top" secondItem="gsE-vM-MVn" secondAttribute="bottom" constant="25" id="CuL-It-0SS"/>
                                 <constraint firstAttribute="trailing" secondItem="DPA-WF-EuC" secondAttribute="trailing" constant="7" id="DKo-At-5lC"/>
                                 <constraint firstItem="gsE-vM-MVn" firstAttribute="centerY" secondItem="eIP-hP-b7u" secondAttribute="centerY" id="OWM-7a-brE"/>
-                                <constraint firstItem="gsE-vM-MVn" firstAttribute="top" secondItem="V2n-RM-seZ" secondAttribute="bottom" constant="26" id="PhW-Zq-tc1"/>
+                                <constraint firstItem="fo5-k6-psJ" firstAttribute="centerY" secondItem="9P4-F6-3qL" secondAttribute="centerY" id="VHt-h0-E7s"/>
                                 <constraint firstItem="DPA-WF-EuC" firstAttribute="trailing" secondItem="gN6-ay-i3E" secondAttribute="trailing" id="bKa-1R-vUu"/>
                                 <constraint firstItem="V2n-RM-seZ" firstAttribute="leading" secondItem="gsE-vM-MVn" secondAttribute="leading" id="c5T-mG-aMw"/>
+                                <constraint firstItem="DPA-WF-EuC" firstAttribute="centerY" secondItem="V2n-RM-seZ" secondAttribute="centerY" id="c5X-gM-vx8"/>
                                 <constraint firstItem="DPA-WF-EuC" firstAttribute="leading" secondItem="V2n-RM-seZ" secondAttribute="trailing" constant="11" id="jus-ER-n8G"/>
                                 <constraint firstItem="V2n-RM-seZ" firstAttribute="leading" secondItem="eIP-hP-b7u" secondAttribute="leading" constant="9" id="lcY-2g-Hmp"/>
                                 <constraint firstItem="gN6-ay-i3E" firstAttribute="leading" secondItem="9P4-F6-3qL" secondAttribute="leading" id="q3a-9N-Y9z"/>
@@ -861,7 +852,7 @@
                         </connections>
                     </popUpButton>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DL0-Ln-4aO">
-                        <rect key="frame" x="530" y="536" width="64" height="18"/>
+                        <rect key="frame" x="530" y="538" width="64" height="16"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Renderer:" id="Y5K-DA-Aq5">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>

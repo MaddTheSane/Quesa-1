@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55FE60EF280639160031B00D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE60EE280639160031B00D /* AppDelegate.swift */; };
+		55FE60F1280639170031B00D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55FE60F0280639170031B00D /* Assets.xcassets */; };
+		55FE60F4280639170031B00D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55FE60F2280639170031B00D /* MainMenu.xib */; };
+		55FE60FD2806392F0031B00D /* Quesa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFD8650C4C8C9000202EA8 /* Quesa.framework */; };
+		55FE60FE2806392F0031B00D /* Quesa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BEFFD8650C4C8C9000202EA8 /* Quesa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55FE61012806396B0031B00D /* DemoGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE61002806396B0031B00D /* DemoGeometry.swift */; };
+		55FE6104280639D40031B00D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55FE6106280639D40031B00D /* Localizable.strings */; };
+		55FE610828063A480031B00D /* QD3DCocoaUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE610728063A480031B00D /* QD3DCocoaUtil.swift */; };
+		55FE610928063AFD0031B00D /* 2.tga in Resources */ = {isa = PBXBuildFile; fileRef = BE2BCA3723F4BF3000AE7F4A /* 2.tga */; };
+		55FE610A28063AFD0031B00D /* 3.tga in Resources */ = {isa = PBXBuildFile; fileRef = BE2BCA3823F4BF3000AE7F4A /* 3.tga */; };
+		55FE610B28063AFD0031B00D /* 4.tga in Resources */ = {isa = PBXBuildFile; fileRef = BE2BCA3B23F4BF3000AE7F4A /* 4.tga */; };
+		55FE610C28063AFD0031B00D /* US_$5_obverse.tga in Resources */ = {isa = PBXBuildFile; fileRef = BE2BCA3423F4BF3000AE7F4A /* US_$5_obverse.tga */; };
+		55FE610D28063AFD0031B00D /* 6.tga in Resources */ = {isa = PBXBuildFile; fileRef = BE2BCA3923F4BF3000AE7F4A /* 6.tga */; };
+		55FE610E28063AFD0031B00D /* 1.tga in Resources */ = {isa = PBXBuildFile; fileRef = BE2BCA3A23F4BF3000AE7F4A /* 1.tga */; };
+		55FE610F28063AFD0031B00D /* 5.tga in Resources */ = {isa = PBXBuildFile; fileRef = BE2BCA3C23F4BF3000AE7F4A /* 5.tga */; };
 		BE0A2478233BE1AF003E6635 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = BE0A2475233BE1AF003E6635 /* AppDelegate.mm */; };
 		BE1352920C3C14F400B20B60 /* AppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 17327D4CFF18F4807F000001 /* AppDelegate.h */; };
 		BE1352930C3C14F400B20B60 /* DemoGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E8954ACFF1927E77F000001 /* DemoGeometry.h */; };
@@ -81,6 +96,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		55FE60FF2806392F0031B00D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				55FE60FE2806392F0031B00D /* Quesa.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BE1353040C3C17E700B20B60 /* Copy Private Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -101,6 +127,14 @@
 		2179FF0AFF19522C7F000001 /* Quesa3DView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Quesa3DView.h; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2D6A02D3FF1986E17F000001 /* QuesaCocoaUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuesaCocoaUtil.h; sourceTree = "<group>"; };
+		55FE60EC280639160031B00D /* QuesaSwiftTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuesaSwiftTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		55FE60EE280639160031B00D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		55FE60F0280639170031B00D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		55FE60F3280639170031B00D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		55FE60F5280639170031B00D /* QuesaSwiftTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuesaSwiftTest.entitlements; sourceTree = "<group>"; };
+		55FE61002806396B0031B00D /* DemoGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoGeometry.swift; sourceTree = "<group>"; };
+		55FE6105280639D40031B00D /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		55FE610728063A480031B00D /* QD3DCocoaUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QD3DCocoaUtil.swift; sourceTree = "<group>"; };
 		BE0A2475233BE1AF003E6635 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		BE1352A80C3C14F400B20B60 /* QuesaCocoaTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuesaCocoaTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE13530F0C3C190300B20B60 /* project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
@@ -134,6 +168,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		55FE60E9280639160031B00D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55FE60FD2806392F0031B00D /* Quesa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BE13529F0C3C14F400B20B60 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -169,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				BE1352A80C3C14F400B20B60 /* QuesaCocoaTest.app */,
+				55FE60EC280639160031B00D /* QuesaSwiftTest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,6 +222,7 @@
 				BE13530F0C3C190300B20B60 /* project.xcconfig */,
 				33CEB99E0055FFC57F000001 /* Demo App */,
 				33CEB9A00055FFC57F000001 /* Quesa3DView */,
+				55FE60ED280639160031B00D /* QuesaSwiftTest */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				BE13535F0C3C218B00B20B60 /* Projects */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -245,9 +289,9 @@
 		33CEB99F0055FFC57F000001 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				2D6A02D3FF1986E17F000001 /* QuesaCocoaUtil.h */,
 				17327D4CFF18F4807F000001 /* AppDelegate.h */,
 				1E8954ACFF1927E77F000001 /* DemoGeometry.h */,
+				2D6A02D3FF1986E17F000001 /* QuesaCocoaUtil.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -259,6 +303,20 @@
 				2179FF0AFF19522C7F000001 /* Quesa3DView.h */,
 			);
 			name = Quesa3DView;
+			sourceTree = "<group>";
+		};
+		55FE60ED280639160031B00D /* QuesaSwiftTest */ = {
+			isa = PBXGroup;
+			children = (
+				55FE610728063A480031B00D /* QD3DCocoaUtil.swift */,
+				55FE61002806396B0031B00D /* DemoGeometry.swift */,
+				55FE60EE280639160031B00D /* AppDelegate.swift */,
+				55FE60F0280639170031B00D /* Assets.xcassets */,
+				55FE60F2280639170031B00D /* MainMenu.xib */,
+				55FE6106280639D40031B00D /* Localizable.strings */,
+				55FE60F5280639170031B00D /* QuesaSwiftTest.entitlements */,
+			);
+			path = QuesaSwiftTest;
 			sourceTree = "<group>";
 		};
 		BE13535F0C3C218B00B20B60 /* Projects */ = {
@@ -303,6 +361,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		55FE60EB280639160031B00D /* QuesaSwiftTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55FE60FC280639170031B00D /* Build configuration list for PBXNativeTarget "QuesaSwiftTest" */;
+			buildPhases = (
+				55FE60E8280639160031B00D /* Sources */,
+				55FE60E9280639160031B00D /* Frameworks */,
+				55FE60EA280639160031B00D /* Resources */,
+				55FE60FF2806392F0031B00D /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuesaSwiftTest;
+			productName = QuesaSwiftTest;
+			productReference = 55FE60EC280639160031B00D /* QuesaSwiftTest.app */;
+			productType = "com.apple.product-type.application";
+		};
 		BE1352900C3C14F400B20B60 /* Quesa3DView */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE1352A30C3C14F400B20B60 /* Build configuration list for PBXNativeTarget "Quesa3DView" */;
@@ -331,7 +407,14 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					55FE60EB280639160031B00D = {
+						CreatedOnToolsVersion = 13.3.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = B1FFA3480906B1A30010DA99 /* Build configuration list for PBXProject "Quesa3DView" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -342,6 +425,7 @@
 				fr,
 				ja,
 				en,
+				Base,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CocoaApp */;
 			projectDirPath = "";
@@ -354,6 +438,7 @@
 			projectRoot = ../../../..;
 			targets = (
 				BE1352900C3C14F400B20B60 /* Quesa3DView */,
+				55FE60EB280639160031B00D /* QuesaSwiftTest */,
 			);
 		};
 /* End PBXProject section */
@@ -390,6 +475,23 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		55FE60EA280639160031B00D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55FE60F1280639170031B00D /* Assets.xcassets in Resources */,
+				55FE610928063AFD0031B00D /* 2.tga in Resources */,
+				55FE6104280639D40031B00D /* Localizable.strings in Resources */,
+				55FE610E28063AFD0031B00D /* 1.tga in Resources */,
+				55FE610F28063AFD0031B00D /* 5.tga in Resources */,
+				55FE610B28063AFD0031B00D /* 4.tga in Resources */,
+				55FE610A28063AFD0031B00D /* 3.tga in Resources */,
+				55FE610D28063AFD0031B00D /* 6.tga in Resources */,
+				55FE610C28063AFD0031B00D /* US_$5_obverse.tga in Resources */,
+				55FE60F4280639170031B00D /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BE1352960C3C14F400B20B60 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -428,6 +530,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		55FE60E8280639160031B00D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55FE61012806396B0031B00D /* DemoGeometry.swift in Sources */,
+				55FE60EF280639160031B00D /* AppDelegate.swift in Sources */,
+				55FE610828063A480031B00D /* QD3DCocoaUtil.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BE1352990C3C14F400B20B60 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -455,6 +567,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		55FE60F2280639170031B00D /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55FE60F3280639170031B00D /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		55FE6106280639D40031B00D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55FE6105280639D40031B00D /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		BE44FACA24240AD000DF8317 /* WindowRect.png */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -490,6 +618,102 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		55FE60F6280639170031B00D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = QuesaSwiftTest/QuesaSwiftTest.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.MaddTheSane.QuesaSwiftTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		55FE60F7280639170031B00D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = QuesaSwiftTest/QuesaSwiftTest.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.MaddTheSane.QuesaSwiftTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		B1FFA3490906B1A30010DA99 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE13530F0C3C190300B20B60 /* project.xcconfig */;
@@ -582,6 +806,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		55FE60FC280639170031B00D /* Build configuration list for PBXNativeTarget "QuesaSwiftTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55FE60F6280639170031B00D /* Debug */,
+				55FE60F7280639170031B00D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		B1FFA3480906B1A30010DA99 /* Build configuration list for PBXProject "Quesa3DView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

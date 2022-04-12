@@ -70,7 +70,7 @@
 #import "Quesa3DView.h"
 #import "DemoGeometry.h"
 
-enum
+NS_ENUM(NSInteger)
 {
 	kMenuItemGeometryBox = 1,
 	kMenuItemGeometryCone,
@@ -906,10 +906,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 //	animates
 //==================================================================================
 
-- (BOOL) animates
-{
-	return mAnimates;
-}
+@synthesize animates = mAnimates;
 
 //==================================================================================
 //	setAnimates:
@@ -943,10 +940,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 //	drawsShadows
 //==================================================================================
 
-- (BOOL) drawsShadows
-{
-	return mDrawsShadows;
-}
+@synthesize drawsShadows = mDrawsShadows;
 
 //==================================================================================
 //	setDrawsShadows:
@@ -965,10 +959,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 //==================================================================================
 //	directionalLight
 //==================================================================================
-- (BOOL) directionalLight
-{
-	return _directionalLight;
-}
+@synthesize directionalLight = _directionalLight;
 
 //==================================================================================
 //	setDirectionalLight:
@@ -994,10 +985,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 //==================================================================================
 //	pointLight
 //==================================================================================
-- (BOOL) pointLight
-{
-	return _pointLight;
-}
+@synthesize pointLight = _pointLight;
 
 //==================================================================================
 //	setPointLight:
@@ -1022,10 +1010,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 //==================================================================================
 //	ambientLight
 //==================================================================================
-- (BOOL) ambientLight
-{
-	return _ambientLight;
-}
+@synthesize ambientLight = _ambientLight;
 
 //==================================================================================
 //	setAmbientLight:
@@ -1080,10 +1065,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 //	fullScreenAntialias
 //==================================================================================
 
-- (BOOL) fullScreenAntialias
-{
-	return mFullScreenAntialias;
-}
+@synthesize fullScreenAntialias = mFullScreenAntialias;
 
 //==================================================================================
 //	setFullScreenAntialias:
@@ -1102,10 +1084,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 //	rendererType
 //==================================================================================
 
-- (TQ3ObjectType) rendererType
-{
-	return mRendererType;
-}
+@synthesize rendererType = mRendererType;
 
 //==================================================================================
 //	setRendererType:
@@ -1128,10 +1107,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 //	xRotation
 //==================================================================================
 
-- (float) xRotation
-{
-	return mXRotation;
-}
+@synthesize xRotation = mXRotation;
 
 //==================================================================================
 //	setXRotation:
@@ -1147,10 +1123,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 //	yRotation
 //==================================================================================
 
-- (float) yRotation
-{
-	return mYRotation;
-}
+@synthesize yRotation = mYRotation;
 
 //==================================================================================
 //	setYRotation:
@@ -1166,10 +1139,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 //	zRotation
 //==================================================================================
 
-- (float) zRotation
-{
-	return mZRotation;
-}
+@synthesize zRotation = mZRotation;
 
 //==================================================================================
 //	setZRotation:
@@ -1184,10 +1154,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 //==================================================================================
 //	illuminationType
 //==================================================================================
-- (int) illuminationType
-{
-	return mIlluminationShaderType;
-}
+@synthesize illuminationType = mIlluminationShaderType;
 
 //==================================================================================
 //	setIlluminationType:
@@ -1221,10 +1188,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 	}
 }
 
-- (TQ3BackfacingStyle) backfacingStyle
-{
-	return _backfacingStyle;
-}
+@synthesize backfacingStyle = _backfacingStyle;
 
 - (void) setBackfacingStyle: (TQ3BackfacingStyle) backfacingStyle
 {
@@ -1237,10 +1201,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 	}
 }
 
-- (TQ3FillStyle) fillStyle
-{
-	return _fillStyle;
-}
+@synthesize fillStyle = _fillStyle;
 
 - (void) setFillStyle: (TQ3FillStyle) fillStyle
 {
@@ -1253,10 +1214,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 	}
 }
 
-- (int) cameraType
-{
-	return _cameraType;
-}
+@synthesize cameraType = _cameraType;
 
 - (void) setCameraType: (int)cameraType
 {
@@ -1290,10 +1248,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 	}
 }
 
-- (int) fogStyleTag
-{
-	return _fogStyleTag;
-}
+@synthesize fogStyleTag = _fogStyleTag;
 
 - (void) setFogStyleTag: (int) fogStyleTag
 {
@@ -1355,10 +1310,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 	}
 }
 
-- (BOOL) flatInterpolation
-{
-	return _flatInterpolation;
-}
+@synthesize flatInterpolation = _flatInterpolation;
 
 - (void) setFlatInterpolation: (BOOL) flatInterpolation
 {
@@ -1371,10 +1323,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 	}
 }
 
-- (BOOL) testViewport
-{
-	return _testViewport;
-}
+@synthesize testViewport = _testViewport;
 
 - (void) setTestViewport:(BOOL)testViewport
 {
@@ -1427,10 +1376,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 	}
 }
 
-- (int) fisheyeMappingFunc
-{
-	return _fisheyeMappingFunc;
-}
+@synthesize fisheyeMappingFunc = _fisheyeMappingFunc;
 
 - (void) setFisheyeMappingFunc:(int)fisheyeMappingFunc
 {
@@ -1452,10 +1398,7 @@ static void ApplyTextureToShape( TQ3ShaderObject inTextureShader, TQ3ShapeObject
 	}
 }
 
-- (float) fisheyeAngleOfView
-{
-	return _fisheyeAngleOfView;
-}
+@synthesize fisheyeAngleOfView = _fisheyeAngleOfView;
 
 - (void) setFisheyeAngleOfView:(float)fisheyeAngleOfView
 {

@@ -100,31 +100,31 @@
 	NSCursor*			_windowRectPickCursor;
 }
 
-@property (assign) BOOL		drawsShadows;
-@property (assign) BOOL		animates;
+@property (nonatomic, assign) BOOL		drawsShadows;
+@property (nonatomic, assign) BOOL		animates;
 @property (assign) BOOL		drawsBounds;
-@property (assign) BOOL		fullScreenAntialias;
-@property (assign) BOOL		directionalLight;
-@property (assign) BOOL		pointLight;
-@property (assign) BOOL		ambientLight;
-@property (assign) BOOL		flatInterpolation;
-@property (assign) BOOL		testViewport;
+@property (nonatomic, assign) BOOL		fullScreenAntialias;
+@property (nonatomic, assign) BOOL		directionalLight;
+@property (nonatomic, assign) BOOL		pointLight;
+@property (nonatomic, assign) BOOL		ambientLight;
+@property (nonatomic, assign) BOOL		flatInterpolation;
+@property (nonatomic, assign) BOOL		testViewport;
 
-@property (assign) TQ3ObjectType	rendererType;
+@property (nonatomic, assign) TQ3ObjectType	rendererType;
 
-@property (assign)	float	xRotation;
-@property (assign)	float	yRotation;
-@property (assign)	float	zRotation;
+@property (nonatomic, assign)	float	xRotation;
+@property (nonatomic, assign)	float	yRotation;
+@property (nonatomic, assign)	float	zRotation;
 
-@property (assign)	int		illuminationType;
-@property (assign) TQ3BackfacingStyle	backfacingStyle;
-@property (assign) TQ3FillStyle			fillStyle;
-@property (assign) int		fogStyleTag;
-@property (assign)	int		cameraType;
+@property (nonatomic, assign)	int		illuminationType;
+@property (nonatomic, assign) TQ3BackfacingStyle	backfacingStyle;
+@property (nonatomic, assign) TQ3FillStyle			fillStyle;
+@property (nonatomic, assign) int		fogStyleTag;
+@property (nonatomic, assign)	int		cameraType;
 @property (assign) BOOL fisheyeCamera;
-@property (assign) int fisheyeCropFormat;
-@property (assign) int fisheyeMappingFunc;
-@property (assign) float fisheyeAngleOfView;
+@property (nonatomic, assign) int fisheyeCropFormat;
+@property (nonatomic, assign) int fisheyeMappingFunc;
+@property (nonatomic, assign) float fisheyeAngleOfView;
 @property (retain) NSCursor* windowRectPickCursor;
 
 - (IBAction)setGeometryFromTag:(id)sender;

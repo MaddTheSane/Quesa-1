@@ -436,7 +436,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$CONFIGURATION_BUILD_DIR\"\n\n# Make a symbolic link in the configuration build directory, pointing to the right version of Quesa.\necho \"ln -h -f -s \" \"../../../../Libraries/Mac/Framework_Modern/$CONFIGURATION/Quesa.framework\" Quesa.framework\nln -h -f -s \"../../../../Libraries/Mac/Framework_Modern/$CONFIGURATION/Quesa.framework/\" Quesa.framework\n";
+			shellScript = "cd \"$CONFIGURATION_BUILD_DIR\"\n\n# Make a symbolic link in the configuration build directory, pointing to the right version of Quesa.\necho \"ln -h -f -s \" \"$SRCROOT/../../Libraries/Mac/Framework_Modern/$CONFIGURATION/Quesa.framework/\" Quesa.framework\nln -h -f -s \"$SRCROOT/../../Libraries/Mac/Framework_Modern/$CONFIGURATION/Quesa.framework/\" Quesa.framework\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

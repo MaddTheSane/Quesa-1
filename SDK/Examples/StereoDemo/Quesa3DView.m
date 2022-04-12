@@ -510,6 +510,9 @@
 {
 	TQ3Area							theArea;
 	float	aspect;
+	if (drawContext == NULL) {
+		return;
+	}
 	
 	Q3DrawContext_GetPane(drawContext, &theArea);
 	

@@ -89,15 +89,15 @@ func createGeomBox() -> TQ3GeometryObject? {
 	
 	for n in 0 ..< 6 {
 		faceAttributes[n] = Q3AttributeSet_New();
-		if (faceAttributes[n] != nil) {
-			Q3AttributeSet_Add(faceAttributes[n]!, TQ3AttributeType(kQ3AttributeTypeDiffuseColor.rawValue), &faceColour[n]);
+		if let faceAttrib = faceAttributes[n] {
+			Q3AttributeSet_Add(faceAttrib, TQ3AttributeType(kQ3AttributeTypeDiffuseColor.rawValue), &faceColour[n]);
 		}
 	}
 	defer {
 		// Clean up
 		for n in 0 ..< 6 {
-			if faceAttributes[n] != nil {
-				Q3Object_Dispose(faceAttributes[n])
+			if let faceAttrib = faceAttributes[n] {
+				Q3Object_Dispose(faceAttrib)
 			}
 		}
 	}
@@ -127,7 +127,58 @@ func createGeomBox() -> TQ3GeometryObject? {
 
 /// Create a Cone object.
 func createGeomCone() -> TQ3GeometryObject! {
-	return nil
+	var coneColour = TQ3ColorRGB(r: 1, g: 1, b: 1)
+	var bottomColour = TQ3ColorRGB(r: 1, g: 0, b: 0)
+	var faceTrans = TQ3ColorRGB(r: 0.2, g: 0.2, b: 0.2)
+	var coneData = TQ3ConeData()
+	
+	// Set up the data
+	coneData.origin = TQ3Point3D(x: 0, y: -1, z: 0)
+	coneData.orientation = TQ3Vector3D(x: 0, y: 2, z: 0)
+	coneData.majorRadius = TQ3Vector3D(x: 0, y: 0, z: 1)
+	coneData.minorRadius = TQ3Vector3D(x: 1, y: 0, z: 0)
+	coneData.uMin = 0.0
+	coneData.uMax = 1.0
+	coneData.vMin = 0.0
+	coneData.vMax = 1.0
+	coneData.caps = kQ3EndCapMaskBottom.rawValue
+
+	coneData.coneAttributeSet = Q3AttributeSet_New()
+	if let attribSet = coneData.coneAttributeSet {
+		Q3AttributeSet_Add(attribSet, kQ3AttributeTypeDiffuseColor.rawValue, &coneColour)
+	}
+	
+	coneData.faceAttributeSet = Q3AttributeSet_New()
+	if let attribSet = coneData.faceAttributeSet {
+		Q3AttributeSet_Add(attribSet, kQ3AttributeTypeTransparencyColor.rawValue, &faceTrans)
+	}
+
+	coneData.bottomAttributeSet = Q3AttributeSet_New()
+	if let attribSet = coneData.bottomAttributeSet {
+		Q3AttributeSet_Add(attribSet, kQ3AttributeTypeDiffuseColor.rawValue, &bottomColour)
+	}
+
+	defer {
+		// Clean up
+		if let attribSet = coneData.coneAttributeSet {
+			Q3Object_Dispose(attribSet)
+		}
+			
+		 if let attribSet = coneData.interiorAttributeSet {
+			Q3Object_Dispose(attribSet)
+		}
+			
+		if let attribSet = coneData.faceAttributeSet {
+			Q3Object_Dispose(attribSet)
+		}
+			
+		if let attribSet = coneData.bottomAttributeSet {
+			Q3Object_Dispose(attribSet)
+		}
+	}
+	
+	// Create the geometry
+	return Q3Cone_New(&coneData)
 }
 
 /// Create a Cylinder object.
@@ -137,17 +188,87 @@ func createGeomCylinder() -> TQ3GeometryObject! {
 
 /// Create a Disk object.
 func createGeomDisk() -> TQ3GeometryObject! {
-	return nil
+	var diskColour = TQ3ColorRGB(r: 1, g: 1, b: 0)
+	var diskData = TQ3DiskData()
+	
+	// Set up the data
+	diskData.origin = TQ3Point3D(x: 0, y: 0, z: 0)
+	diskData.majorRadius = TQ3Vector3D(x: 0, y: 0, z: 1)
+	diskData.minorRadius = TQ3Vector3D(x: 1, y: 0, z: 0)
+	diskData.uMin = 0.0
+	diskData.uMax = 1.0
+	diskData.vMin = 0.0
+	diskData.vMax = 1.0
+
+	diskData.diskAttributeSet = Q3AttributeSet_New();
+	if let attrSet = diskData.diskAttributeSet {
+		Q3AttributeSet_Add(attrSet, kQ3AttributeTypeDiffuseColor.rawValue, &diskColour)
+	}
+	
+	defer {
+		if let attrSet = diskData.diskAttributeSet {
+			Q3Object_Dispose(attrSet)
+		}
+	}
+	
+	return Q3Disk_New(&diskData)
 }
 
 /// Create an Ellipse object.
 func createGeomEllipse() -> TQ3GeometryObject! {
-	return nil
+	var ellipseColour = TQ3ColorRGB(r: 1, g: 0, b: 0)
+	var ellipseData = TQ3EllipseData()
+	
+	
+	// Set up the data
+	Q3Point3D_Set(&ellipseData.origin,       0.0,  0.0,  0.0)
+	Q3Vector3D_Set(&ellipseData.majorRadius, 0.0,  0.0,  1.0)
+	Q3Vector3D_Set(&ellipseData.minorRadius, 1.0,  0.0,  0.0)
+	ellipseData.uMin = 0.0
+	ellipseData.uMax = 0.75
+
+	ellipseData.ellipseAttributeSet = Q3AttributeSet_New();
+	if let attrSet = ellipseData.ellipseAttributeSet {
+		Q3AttributeSet_Add(attrSet, kQ3AttributeTypeDiffuseColor.rawValue, &ellipseColour)
+	}
+	
+	defer {
+		if let attrSet = ellipseData.ellipseAttributeSet {
+			Q3Object_Dispose(attrSet)
+		}
+	}
+
+	// Create the geometry
+	return Q3Ellipse_New(&ellipseData)
 }
 
 /// Create an Ellipsoid object.
 func createGeomEllipsoid() -> TQ3GeometryObject! {
-	return nil
+	var ellipsoidColour = TQ3ColorRGB(r: 1, g: 0, b: 0)
+	var ellipsoidData = TQ3EllipsoidData(origin: TQ3Point3D(x: 0, y: 0, z: 0),
+										 orientation: TQ3Vector3D(x: 0, y: 0, z: 0.5),
+										 majorRadius: TQ3Vector3D(x: 1, y: 0, z: 0),
+										 minorRadius: TQ3Vector3D(x: 0, y: 1.5, z: 0),
+										 uMin: 0, uMax: 1, vMin: 0, vMax: 1,
+										 caps: kQ3EndCapNone.rawValue,
+										 interiorAttributeSet: nil,
+										 ellipsoidAttributeSet: nil)
+	
+	// Set up the data
+	ellipsoidData.ellipsoidAttributeSet = Q3AttributeSet_New();
+	if let ellipsDat = ellipsoidData.ellipsoidAttributeSet {
+		Q3AttributeSet_Add(ellipsDat, kQ3AttributeTypeDiffuseColor.rawValue, &ellipsoidColour)
+	}
+
+	defer {
+		// Clean up
+		if let ellipsDat = ellipsoidData.ellipsoidAttributeSet {
+			Q3Object_Dispose(ellipsDat)
+		}
+	}
+	
+	// Create the geometry
+	return Q3Ellipsoid_New(&ellipsoidData)
 }
 
 /// Create an General Polygon object.
@@ -157,7 +278,44 @@ func createGeomGeneralPolygon() -> TQ3GeometryObject! {
 
 /// Create a Line object.
 func createGeomLine() -> TQ3GeometryObject! {
-	return nil
+	let vertPoints = [TQ3Point3D(x: -1, y: -1, z: -1), TQ3Point3D(x: 1, y: 1, z: 1)]
+	var vertColours = [TQ3ColorRGB(r: 1, g: 0, b: 0), TQ3ColorRGB(r: 0, g: 0, b: 1)]
+	
+	var lineData = TQ3LineData()
+	
+	//Unroll loop!
+	do {
+		lineData.vertices.0.point = vertPoints[0]
+		lineData.vertices.1.point = vertPoints[1]
+		
+		lineData.vertices.0.attributeSet = Q3AttributeSet_New()
+		if let attrib = lineData.vertices.0.attributeSet {
+			Q3AttributeSet_Add(attrib,
+							   kQ3AttributeTypeDiffuseColor.rawValue,
+							   &vertColours[0])
+		}
+		
+		lineData.vertices.1.attributeSet = Q3AttributeSet_New()
+		if let attrib = lineData.vertices.1.attributeSet {
+			Q3AttributeSet_Add(attrib,
+							   kQ3AttributeTypeDiffuseColor.rawValue,
+							   &vertColours[1])
+		}
+	}
+	
+	defer {
+		// Clean up
+		if let attrib = lineData.vertices.0.attributeSet {
+			Q3Object_Dispose(attrib)
+		}
+		
+		if let attrib = lineData.vertices.1.attributeSet {
+			Q3Object_Dispose(attrib)
+		}
+	}
+	
+	// Create the geometry
+	return Q3Line_New(&lineData);
 }
 
 /// Create a Marker object.
@@ -658,8 +816,8 @@ func createGeomBounds(_ theGeom: TQ3GeometryObject, in aView: TQ3ViewObject) -> 
 	}
 	defer {
 		// Clean up
-		if boxData.boxAttributeSet != nil {
-			Q3Object_Dispose(boxData.boxAttributeSet)
+		if let attrSet = boxData.boxAttributeSet {
+			Q3Object_Dispose(attrSet)
 		}
 	}
 	

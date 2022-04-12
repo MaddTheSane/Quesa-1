@@ -187,7 +187,12 @@ func createGeomPixmapMarker() -> TQ3GeometryObject! {
 
 /// Create a Point object.
 func createGeomPoint() -> TQ3GeometryObject! {
-	return nil
+	var pointData =  TQ3PointData(point: TQ3Point3D(x: -1, y: -1, z: -1), pointAttributeSet: nil)
+	
+	// Create the geometry
+	let thePoint = Q3Point_New(&pointData);
+	
+	return thePoint
 }
 
 /// Create a Polygon object.
@@ -207,12 +212,125 @@ func createGeomPolyLine() -> TQ3GeometryObject! {
 
 /// Create the Quesa logo geometry.
 func createGeomQuesa() -> TQ3GroupObject! {
-	return nil
+	var	transformData = TQ3RotateTransformData( axis: kQ3AxisZ, radians: Q3Math_DegreesToRadians(45.0))
+	var colourTorus = TQ3ColorRGB(r: 0.19, g: 0.21, b: 0.60)
+	var colourSphere = TQ3ColorRGB(r: 0.66, g: 0.01, b: 0.01)
+	var colourCone = TQ3ColorRGB(r: 0.14, g: 0.42, b: 0.18)
+	var torusData = TQ3TorusData(origin: TQ3Point3D(x: 0, y: 0.3, z: 0),
+								 orientation: TQ3Vector3D(x: 0, y: 0, z: 0.3),
+								 majorRadius: TQ3Vector3D(x: 1, y: 0, z: 0),
+								 minorRadius: TQ3Vector3D(x: 0, y: 1, z: 0),
+								 ratio: 1,
+								 uMin: 0, uMax: 1, vMin: 0, vMax: 1,
+								 caps: kQ3EndCapNone.rawValue, interiorAttributeSet: nil, torusAttributeSet: nil)
+	
+	var sphereData = TQ3EllipsoidData(origin: TQ3Point3D(x: 0, y: 0.3, z: 0),
+									  orientation: TQ3Vector3D(x: 0, y: 0, z: 0.3),
+									  majorRadius: TQ3Vector3D(x: 0.3, y: 0, z: 0),
+									  minorRadius: TQ3Vector3D(x: 0, y: 0.3, z: 0),
+									  uMin: 0, uMax: 1, vMin: 0, vMax: 1,
+									  caps: kQ3EndCapNone.rawValue, interiorAttributeSet: nil, ellipsoidAttributeSet: nil)
+	var coneData = TQ3ConeData(origin: TQ3Point3D(x: 0, y: -1.4, z: 0),
+							   orientation: TQ3Vector3D(x: 0, y: 1.5, z: 0),
+							   majorRadius: TQ3Vector3D(x: 0, y: 0, z: 0.3),
+							   minorRadius: TQ3Vector3D(x: 0.3, y: 0, z: 0),
+							   uMin: 0, uMax: 1, vMin: 0, vMax: 1,
+							   caps: kQ3EndCapMaskBottom.rawValue, interiorAttributeSet: nil, faceAttributeSet: nil, bottomAttributeSet: nil, coneAttributeSet: nil)
+	
+	// Create the group
+	guard let theGroup = Q3OrderedDisplayGroup_New() else {
+		return nil
+	}
+	
+	// Create the transform
+	if let theTransform = Q3RotateTransform_New(&transformData) {
+		Q3Group_AddObject(theGroup, theTransform);
+		Q3Object_Dispose(theTransform);
+	}
+
+	// Create the Torus
+	torusData.torusAttributeSet = Q3AttributeSet_New();
+	if let tas = torusData.torusAttributeSet {
+		Q3AttributeSet_Add(tas, kQ3AttributeTypeDiffuseColor.rawValue, &colourTorus);
+	}
+
+	if let theTorus = Q3Torus_New(&torusData) {
+		Q3Group_AddObject(theGroup, theTorus);
+		Q3Object_Dispose(theTorus);
+	}
+
+	
+	// Create the Sphere
+	sphereData.ellipsoidAttributeSet = Q3AttributeSet_New();
+	if let eas = sphereData.ellipsoidAttributeSet {
+		Q3AttributeSet_Add(eas, kQ3AttributeTypeDiffuseColor.rawValue, &colourSphere);
+	}
+
+	if let theSphere = Q3Ellipsoid_New(&sphereData) {
+		Q3Group_AddObject(theGroup, theSphere);
+		Q3Object_Dispose(theSphere);
+	}
+
+	// Create the Cone
+	coneData.coneAttributeSet = Q3AttributeSet_New();
+	if let cas = coneData.coneAttributeSet {
+		Q3AttributeSet_Add(cas, kQ3AttributeTypeDiffuseColor.rawValue, &colourCone);
+	}
+
+	if let theCone = Q3Cone_New(&coneData) {
+		Q3Group_AddObject(theGroup, theCone);
+		Q3Object_Dispose(theCone);
+	}
+
+	// Clean up
+	if (torusData.torusAttributeSet != nil) {
+		Q3Object_Dispose(torusData.torusAttributeSet);
+	}
+
+	if (sphereData.ellipsoidAttributeSet != nil) {
+		Q3Object_Dispose(sphereData.ellipsoidAttributeSet);
+	}
+
+	if (coneData.coneAttributeSet != nil) {
+		Q3Object_Dispose(coneData.coneAttributeSet);
+	}
+
+	return theGroup
 }
 
 /// Create a Torus object.
 func createGeomTorus() -> TQ3GeometryObject! {
-	return nil
+	var color = TQ3ColorRGB(r: 1.0, g: 0.7, b: 0.4)
+	var torusData = TQ3TorusData(origin: TQ3Point3D(x: 0, y: 0, z: 0),
+								 orientation: TQ3Vector3D(x: 0, y: 0, z: 0.1),
+								 majorRadius: TQ3Vector3D(x: 2, y: 0, z: 0),
+								 minorRadius: TQ3Vector3D(x: 0, y: 0.8, z: 0),
+								 ratio: 1.2,
+								 uMin: 0, uMax: 1, vMin: 0, vMax: 1,
+								 caps: kQ3EndCapNone.rawValue,
+								 interiorAttributeSet: nil,
+								 torusAttributeSet: nil)
+	
+	torusData.torusAttributeSet = Q3AttributeSet_New();
+	if let tas = torusData.torusAttributeSet {
+		Q3AttributeSet_Add(tas,
+						   kQ3AttributeTypeDiffuseColor.rawValue,
+						   &color);
+	}
+	
+	defer {
+		// Clean up
+		if let tas = torusData.torusAttributeSet {
+			Q3Object_Dispose(tas);
+		}
+	}
+	
+	// Create the geometry
+	guard let theTorus = Q3Torus_New(&torusData) else {
+		return nil
+	}
+
+	return theTorus
 }
 
 /// Create a Triangle object.

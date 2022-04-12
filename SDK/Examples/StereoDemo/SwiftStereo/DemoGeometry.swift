@@ -162,12 +162,90 @@ func createGeomLine() -> TQ3GeometryObject! {
 
 /// Create a Marker object.
 func createGeomMarker() -> TQ3GeometryObject! {
-	return nil
+	var imageData = Data([UInt8](arrayLiteral: 0x7E, 0x3C, 0x3C, 0x66, 0x7E, 0x7C, 0x18,
+								 0x60, 0x60, 0x66, 0x66, 0x60, 0x66, 0x18,
+								 0x7C, 0x3C, 0x60, 0x7E, 0x7C, 0x66, 0x18,
+								 0x60, 0x06, 0x60, 0x66, 0x60, 0x7C, 0x18,
+								 0x60, 0x06, 0x66, 0x66, 0x60, 0x66, 0x00,
+								 0x7E, 0x3C, 0x3C, 0x66, 0x7E, 0x66, 0x18))
+	var theColour = TQ3ColorRGB(r: 0, g: 1, b: 1)
+	return imageData.withUnsafeMutableBytes { usbp -> TQ3GeometryObject? in
+		let buf = usbp.bindMemory(to: TQ3Uns8.self)
+		var markerData = TQ3MarkerData(location: TQ3Point3D(x: -1, y: 0.5, z: 0.5), xOffset: -20, yOffset: 20, bitmap: TQ3Bitmap(image: nil, width: 56, height: 6, rowBytes: 7, bitOrder: kQ3EndianBig), markerAttributeSet: nil)
+		markerData.bitmap.image       = buf.baseAddress
+		markerData.markerAttributeSet = Q3AttributeSet_New()
+		if let markerAttrib = markerData.markerAttributeSet {
+			Q3AttributeSet_Add(markerAttrib,
+							   kQ3AttributeTypeDiffuseColor.rawValue,
+							   &theColour)
+		}
+		
+		defer {
+			// Clean up
+			if let markerAttrib = markerData.markerAttributeSet {
+				Q3Object_Dispose(markerAttrib)
+			}
+
+		}
+		
+		// Create the geometry
+		return Q3Marker_New(&markerData);
+	}
 }
 
 /// Create a Mesh object.
 func createGeomMesh() -> TQ3GeometryObject! {
-	return nil
+	var theVertices = [TQ3Vertex3D(point: TQ3Point3D(x: -1.5, y: 1.5, z: 0), attributeSet: nil),
+					   TQ3Vertex3D(point: TQ3Point3D(x: -1.5, y: -1.5, z: 0), attributeSet: nil),
+					   TQ3Vertex3D(point: TQ3Point3D(x: 0, y: 1.5, z: 0.9), attributeSet: nil),
+					   TQ3Vertex3D(point: TQ3Point3D(x: 1.5, y: -1.5, z: 0), attributeSet: nil),
+					   TQ3Vertex3D(point: TQ3Point3D(x: 1.5, y: 1.5, z: 0), attributeSet: nil),
+					   TQ3Vertex3D(point: TQ3Point3D(x: 0, y: 1.5, z: 0.9), attributeSet: nil),
+					   TQ3Vertex3D(point: TQ3Point3D(x: -1.2, y: 0.6, z: 0), attributeSet: nil),
+					   TQ3Vertex3D(point: TQ3Point3D(x: 0, y: 0, z: 0), attributeSet: nil),
+					   TQ3Vertex3D(point: TQ3Point3D(x: -1.2, y: -0.6, z: 0), attributeSet: nil)]
+	var vertUVs = [TQ3Param2D(u: 0.0, v: 1.0), TQ3Param2D(u: 0.0, v: 0.0),
+				   TQ3Param2D(u: 0.5, v: 0.0), TQ3Param2D(u: 1.0, v: 0.0),
+				   TQ3Param2D(u: 1.0, v: 1.0), TQ3Param2D(u: 0.5, v: 1.0),
+				   TQ3Param2D(u: 0.1, v: 0.8), TQ3Param2D(u: 0.5, v: 0.5),
+				   TQ3Param2D(u: 0.1, v: 0.4)]
+	var theColour = TQ3ColorRGB(r: 0.3, g: 0.9, b: 0.5)
+	var meshVertices = [TQ3MeshVertex]()
+
+	// Create the mesh
+	guard let theMesh = Q3Mesh_New() else {
+		return nil
+	}
+	Q3Mesh_DelayUpdates(theMesh)
+
+	// Create the vertices
+	for n in 0 ..< 9 {
+		meshVertices.append(Q3Mesh_VertexNew(theMesh, &theVertices[n]))
+		
+		if let theAttributes = Q3AttributeSet_New() {
+			Q3AttributeSet_Add(theAttributes, kQ3AttributeTypeSurfaceUV.rawValue, &vertUVs[n])
+			Q3Mesh_SetVertexAttributeSet(theMesh, meshVertices[n], theAttributes)
+			Q3Object_Dispose(theAttributes)
+		}
+	}
+	
+	// Add the face
+	let theAttributes = Q3AttributeSet_New();
+	if let theAttributes = theAttributes {
+		Q3AttributeSet_Add(theAttributes, kQ3AttributeTypeDiffuseColor.rawValue, &theColour)
+		
+		let theFace = Q3Mesh_FaceNew(theMesh, 6, meshVertices, theAttributes)
+//		if let theFace = theFace {
+			Q3Mesh_FaceToContour(theMesh, theFace, Q3Mesh_FaceNew(theMesh, 3, &meshVertices[6], nil))
+//		}
+		
+		// Resume updates and clean up
+		Q3Mesh_ResumeUpdates(theMesh)
+		
+		Q3Object_Dispose(theAttributes)
+	}
+
+	return theMesh
 }
 
 /// Create a NURB curve object.

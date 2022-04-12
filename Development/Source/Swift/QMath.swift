@@ -11,11 +11,6 @@ import Quesa.QuesaMath
 // MARK: - Unary minus
 
 /// vector = - vector (unary minus)
-public prefix func -(inVec: TQ3Vector3D) -> TQ3Vector3D {
-	return TQ3Vector3D(x: -inVec.x, y: -inVec.y, z: -inVec.z)
-}
-
-/// vector = - vector (unary minus)
 public prefix func -(inVec: TQ3Vector2D) -> TQ3Vector2D {
 	return TQ3Vector2D(x: -inVec.x, y: -inVec.y)
 }
@@ -28,25 +23,9 @@ public func *(_ inScalar: Float, _ inVec: TQ3Vector3D) -> TQ3Vector3D {
 	return TQ3Vector3D(x: inVec.x * inScalar, y: inVec.y * inScalar, z: inVec.z * inScalar)
 }
 
-/// vector `=` vector `*` scalar
-public func *(_ inVec: TQ3Vector3D, _ inScalar: Float) -> TQ3Vector3D {
-	return TQ3Vector3D(x: inVec.x * inScalar, y: inVec.y * inScalar, z: inVec.z * inScalar)
-}
-
 /// vector `=` scalar `*` vector
 public func *(_ inScalar: Float, _ inVec: TQ3Vector2D) -> TQ3Vector2D {
 	return TQ3Vector2D(x: inVec.x * inScalar, y: inVec.y * inScalar)
-}
-
-/// vector `=` vector `*` scalar
-public func *(_ inVec: TQ3Vector2D, _ inScalar: Float) -> TQ3Vector2D {
-	return TQ3Vector2D(x: inVec.x * inScalar, y: inVec.y * inScalar)
-}
-
-/// vector `*=` scalar
-public func *=(ioA: inout TQ3Vector3D, inScalar: Float) {
-	let ioB = inScalar * ioA
-	ioA = ioB
 }
 
 /// vector `*=` scalar
@@ -96,38 +75,14 @@ public func -(_ inPt2: TQ3Point2D, _ inVec2: TQ3Vector2D) -> TQ3Point2D {
 	return TQ3Point2D(x: rx, y: ry)
 }
 
-/// vector = vector + vector
-public func + (_ inAa: TQ3Vector3D, _ inBa: TQ3Vector3D) -> TQ3Vector3D {
-	return TQ3Vector3D(x: inAa.x + inBa.x, y: inAa.y + inBa.y, z: inAa.z + inBa.z)
-}
-
 /// vector = vector + vector [2D]
 public func + (_ inAa: TQ3Vector2D, _ inBa: TQ3Vector2D) -> TQ3Vector2D {
 	return TQ3Vector2D(x: inAa.x + inBa.x, y: inAa.y + inBa.y)
 }
 
-/// vector = vector - vector
-public func - (_ inAa: TQ3Vector3D, _ inBa: TQ3Vector3D) -> TQ3Vector3D {
-	return TQ3Vector3D(x: inAa.x - inBa.x, y: inAa.y - inBa.y, z: inAa.z - inBa.z)
-}
-
 /// vector = vector - vector [2D]
 public func - (_ inAa: TQ3Vector2D, _ inBa: TQ3Vector2D) -> TQ3Vector2D {
 	return TQ3Vector2D(x: inAa.x - inBa.x, y: inAa.y - inBa.y)
-}
-
-/// vector += vector
-public func +=(_ ioA: inout TQ3Vector3D, _ inBa: TQ3Vector3D) {
-	ioA.x += inBa.x
-	ioA.y += inBa.y
-	ioA.z += inBa.z
-}
-
-/// vector -= vector
-public func -=(_ ioA: inout TQ3Vector3D, _ inBa: TQ3Vector3D) {
-	ioA.x -= inBa.x
-	ioA.y -= inBa.y
-	ioA.z -= inBa.z
 }
 
 /// pt += vector
@@ -156,13 +111,6 @@ public func +( _ inA: TQ3Point2D, _ inB: TQ3Point2D) -> TQ3Point2D {
 
 
 // MARK: - Matrix Operations
-
-/// matrix `*` matrix
-public func *(_ inMata: TQ3Matrix4x4, _ inMat2a: TQ3Matrix4x4) -> TQ3Matrix4x4 {
-	var result = TQ3Matrix4x4(); var inMat1 = inMata; var inMat2 = inMat2a
-	Q3Matrix4x4_Multiply( &inMat1, &inMat2, &result )
-	return result
-}
 
 /// matrix `*=` matrix
 public func *=(_ ioMat: inout TQ3Matrix4x4 , _ inMat2a: TQ3Matrix4x4) {
@@ -233,6 +181,20 @@ extension TQ3Matrix4x4: Equatable {
 		(one.value.3.2 == two.value.3.2) &&
 		(one.value.3.3 == two.value.3.3)
 	}
+	
+	/// matrix `*` matrix
+	static func *(_ inMata: TQ3Matrix4x4, _ inMat2a: TQ3Matrix4x4) -> TQ3Matrix4x4 {
+		var result = TQ3Matrix4x4(); var inMat1 = inMata; var inMat2 = inMat2a
+		Q3Matrix4x4_Multiply( &inMat1, &inMat2, &result )
+		return result
+	}
+
+	/// matrix `*=` matrix
+	static func *=(_ ioMat: inout TQ3Matrix4x4 , _ inMat2a: TQ3Matrix4x4) {
+		var io = TQ3Matrix4x4(); var inMat2 = inMat2a;
+		Q3Matrix4x4_Multiply( &ioMat, &inMat2, &io )
+		ioMat = io
+	}
 }
 
 // MARK: - Common Functions
@@ -266,17 +228,15 @@ public func dot(_ inA: TQ3Vector2D, _ inB: TQ3Vector2D) -> Float {
 }
 
 public func normalize(_ _v1: TQ3Vector3D) -> TQ3Vector3D {
-	let theLength = length(_v1) + kQ3MinFloat;
-	return (1.0 / theLength) * _v1
+	return _v1.normalized
 }
 
 public func length(_ inVec2: TQ3Vector3D) -> Float {
-	return sqrt(length_squared(inVec2))
+	return inVec2.length
 }
 
 public func length_squared(_ _v: TQ3Vector3D) -> Float {
-	let toRet = (_v.x * _v.x) + (_v.y * _v.y) + (_v.z * _v.z)
-	return toRet
+	return _v.lengthSquared
 }
 
 public func length(_ inVec2: TQ3Vector2D) -> Float {
@@ -302,4 +262,72 @@ public func Q3Math_DegreesToRadians(_ x: Float) -> Float {
 
 public func Q3Math_RadiansToDegrees(_ x: Float) -> Float {
 	return ((x) * 180.0 / kQ3Pi)
+}
+
+public extension TQ3Vector2D {
+	/// vector `=` vector `*` scalar
+	static func *(_ inVec: TQ3Vector2D, _ inScalar: Float) -> TQ3Vector2D {
+		return TQ3Vector2D(x: inVec.x * inScalar, y: inVec.y * inScalar)
+	}
+}
+
+public extension TQ3Vector3D {
+	mutating func normalize() {
+		let theLength = self.length + kQ3MinFloat
+		self *= (1.0 / theLength)
+	}
+	
+	var normalized: TQ3Vector3D {
+		let theLength = self.length + kQ3MinFloat
+		return self * (1.0 / theLength)
+	}
+	
+	var length: Float {
+		return sqrt(lengthSquared)
+	}
+	
+	var lengthSquared: Float {
+		let toRet = (x * x) + (y * y) + (z * z)
+		return toRet
+	}
+	
+	/// vector `=` vector `*` scalar
+	static func *(_ inVec: TQ3Vector3D, _ inScalar: Float) -> TQ3Vector3D {
+		return TQ3Vector3D(x: inVec.x * inScalar, y: inVec.y * inScalar, z: inVec.z * inScalar)
+	}
+	
+	/// vector = vector + vector
+	static func + (_ inAa: TQ3Vector3D, _ inBa: TQ3Vector3D) -> TQ3Vector3D {
+		return TQ3Vector3D(x: inAa.x + inBa.x, y: inAa.y + inBa.y, z: inAa.z + inBa.z)
+	}
+	
+	/// vector = vector - vector
+	static func - (_ inAa: TQ3Vector3D, _ inBa: TQ3Vector3D) -> TQ3Vector3D {
+		return TQ3Vector3D(x: inAa.x - inBa.x, y: inAa.y - inBa.y, z: inAa.z - inBa.z)
+	}
+
+	/// vector += vector
+	static func +=(_ ioA: inout TQ3Vector3D, _ inBa: TQ3Vector3D) {
+		ioA.x += inBa.x
+		ioA.y += inBa.y
+		ioA.z += inBa.z
+	}
+
+	/// vector -= vector
+	static func -=(_ ioA: inout TQ3Vector3D, _ inBa: TQ3Vector3D) {
+		ioA.x -= inBa.x
+		ioA.y -= inBa.y
+		ioA.z -= inBa.z
+	}
+
+	/// vector `*=` scalar
+	static func *=(_ ioA: inout TQ3Vector3D, _ inScalar: Float) {
+		let ioB = inScalar * ioA
+		ioA = ioB
+	}
+
+	/// vector = - vector (unary minus)
+	static prefix func -(_ inVec: TQ3Vector3D) -> TQ3Vector3D {
+		return TQ3Vector3D(x: -inVec.x, y: -inVec.y, z: -inVec.z)
+	}
 }

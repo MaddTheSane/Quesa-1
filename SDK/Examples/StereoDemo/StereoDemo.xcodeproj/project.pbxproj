@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55BD63572804D20300CDEA64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD63562804D20300CDEA64 /* AppDelegate.swift */; };
+		55BD63592804D20900CDEA64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55BD63582804D20900CDEA64 /* Assets.xcassets */; };
+		55BD635C2804D20900CDEA64 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55BD635A2804D20900CDEA64 /* MainMenu.xib */; };
+		55BD63642804D2C800CDEA64 /* DemoGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD63612804D2C800CDEA64 /* DemoGeometry.swift */; };
+		55BD63652804D2C800CDEA64 /* QD3DCocoaUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD63622804D2C800CDEA64 /* QD3DCocoaUtil.swift */; };
+		55BD63662804D2C800CDEA64 /* QD3DView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD63632804D2C800CDEA64 /* QD3DView.swift */; };
+		55BD63672804D5AF00CDEA64 /* Quesa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECB0EA50F361BD700EECDAB /* Quesa.framework */; };
+		55BD63682804D5AF00CDEA64 /* Quesa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BECB0EA50F361BD700EECDAB /* Quesa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BE1352920C3C14F400B20B60 /* DemoController.h in Headers */ = {isa = PBXBuildFile; fileRef = 17327D4CFF18F4807F000001 /* DemoController.h */; };
 		BE1352930C3C14F400B20B60 /* DemoGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E8954ACFF1927E77F000001 /* DemoGeometry.h */; };
 		BE1352940C3C14F400B20B60 /* Quesa3DView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2179FF0AFF19522C7F000001 /* Quesa3DView.h */; };
@@ -56,6 +64,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		55BD63692804D5AF00CDEA64 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				55BD63682804D5AF00CDEA64 /* Quesa.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BE1353040C3C17E700B20B60 /* Copy Private Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -81,6 +100,14 @@
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2D6A02D3FF1986E17F000001 /* QuesaCocoaUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuesaCocoaUtil.h; sourceTree = "<group>"; };
 		2D6A02D4FF1986E17F000001 /* QuesaCocoaUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuesaCocoaUtil.m; sourceTree = "<group>"; };
+		55BD63542804D20300CDEA64 /* SwiftStereo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftStereo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		55BD63562804D20300CDEA64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		55BD63582804D20900CDEA64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		55BD635B2804D20900CDEA64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		55BD635D2804D20900CDEA64 /* SwiftStereo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftStereo.entitlements; sourceTree = "<group>"; };
+		55BD63612804D2C800CDEA64 /* DemoGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoGeometry.swift; sourceTree = "<group>"; };
+		55BD63622804D2C800CDEA64 /* QD3DCocoaUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QD3DCocoaUtil.swift; sourceTree = "<group>"; };
+		55BD63632804D2C800CDEA64 /* QD3DView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QD3DView.swift; sourceTree = "<group>"; };
 		BE1352A80C3C14F400B20B60 /* StereoDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StereoDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE13530F0C3C190300B20B60 /* project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
 		BE1353140C3C1B9E00B20B60 /* Info-Quesa3DView.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "Info-Quesa3DView.plist"; sourceTree = "<group>"; };
@@ -91,6 +118,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		55BD63512804D20300CDEA64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55BD63672804D5AF00CDEA64 /* Quesa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BE13529F0C3C14F400B20B60 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -128,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				BE1352A80C3C14F400B20B60 /* StereoDemo.app */,
+				55BD63542804D20300CDEA64 /* SwiftStereo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,6 +174,7 @@
 				BE13530F0C3C190300B20B60 /* project.xcconfig */,
 				33CEB99E0055FFC57F000001 /* Demo App */,
 				33CEB9A00055FFC57F000001 /* Quesa3DView */,
+				55BD63552804D20300CDEA64 /* SwiftStereo */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				BE13535F0C3C218B00B20B60 /* Projects */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -201,6 +238,20 @@
 			name = Quesa3DView;
 			sourceTree = "<group>";
 		};
+		55BD63552804D20300CDEA64 /* SwiftStereo */ = {
+			isa = PBXGroup;
+			children = (
+				55BD63562804D20300CDEA64 /* AppDelegate.swift */,
+				55BD63612804D2C800CDEA64 /* DemoGeometry.swift */,
+				55BD63622804D2C800CDEA64 /* QD3DCocoaUtil.swift */,
+				55BD63632804D2C800CDEA64 /* QD3DView.swift */,
+				55BD63582804D20900CDEA64 /* Assets.xcassets */,
+				55BD635A2804D20900CDEA64 /* MainMenu.xib */,
+				55BD635D2804D20900CDEA64 /* SwiftStereo.entitlements */,
+			);
+			path = SwiftStereo;
+			sourceTree = "<group>";
+		};
 		BE13535F0C3C218B00B20B60 /* Projects */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +288,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		55BD63532804D20300CDEA64 /* SwiftStereo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55BD635E2804D20900CDEA64 /* Build configuration list for PBXNativeTarget "SwiftStereo" */;
+			buildPhases = (
+				55BD63502804D20300CDEA64 /* Sources */,
+				55BD63512804D20300CDEA64 /* Frameworks */,
+				55BD63522804D20300CDEA64 /* Resources */,
+				55BD63692804D5AF00CDEA64 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftStereo;
+			productName = SwiftSetero;
+			productReference = 55BD63542804D20300CDEA64 /* SwiftStereo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		BE1352900C3C14F400B20B60 /* StereoView */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE1352A30C3C14F400B20B60 /* Build configuration list for PBXNativeTarget "StereoView" */;
@@ -264,7 +333,14 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					55BD63532804D20300CDEA64 = {
+						CreatedOnToolsVersion = 13.3;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = B1FFA3480906B1A30010DA99 /* Build configuration list for PBXProject "StereoDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -275,6 +351,7 @@
 				Japanese,
 				French,
 				German,
+				Base,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CocoaApp */;
 			projectDirPath = "";
@@ -287,6 +364,7 @@
 			projectRoot = "";
 			targets = (
 				BE1352900C3C14F400B20B60 /* StereoView */,
+				55BD63532804D20300CDEA64 /* SwiftStereo */,
 			);
 		};
 /* End PBXProject section */
@@ -323,6 +401,15 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		55BD63522804D20300CDEA64 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55BD63592804D20900CDEA64 /* Assets.xcassets in Resources */,
+				55BD635C2804D20900CDEA64 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BE1352960C3C14F400B20B60 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -352,6 +439,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		55BD63502804D20300CDEA64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55BD63662804D2C800CDEA64 /* QD3DView.swift in Sources */,
+				55BD63642804D2C800CDEA64 /* DemoGeometry.swift in Sources */,
+				55BD63572804D20300CDEA64 /* AppDelegate.swift in Sources */,
+				55BD63652804D2C800CDEA64 /* QD3DCocoaUtil.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BE1352990C3C14F400B20B60 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -383,9 +481,109 @@
 			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
+		55BD635A2804D20900CDEA64 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55BD635B2804D20900CDEA64 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		55BD635F2804D20900CDEA64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SwiftStereo/SwiftStereo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.MaddTheSane.SwiftStereo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		55BD63602804D20900CDEA64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SwiftStereo/SwiftStereo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.MaddTheSane.SwiftStereo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		B1FFA3490906B1A30010DA99 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE13530F0C3C190300B20B60 /* project.xcconfig */;
@@ -483,6 +681,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		55BD635E2804D20900CDEA64 /* Build configuration list for PBXNativeTarget "SwiftStereo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55BD635F2804D20900CDEA64 /* Debug */,
+				55BD63602804D20900CDEA64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		B1FFA3480906B1A30010DA99 /* Build configuration list for PBXProject "StereoDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

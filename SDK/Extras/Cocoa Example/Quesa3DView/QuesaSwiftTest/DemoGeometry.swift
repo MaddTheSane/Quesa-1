@@ -1187,3 +1187,139 @@ func createGeomBounds(_ theGeom: TQ3GeometryObject, in aView: TQ3ViewObject) -> 
 	
 	return theGroup
 }
+
+private func loadTextureShaderFromResource(named inName: String) -> TQ3ShaderObject? {
+	var theShader: TQ3ShaderObject? = nil
+	let name2 = inName as NSString
+	let namePart = name2.deletingPathExtension
+	let extPart = name2.pathExtension
+	
+	if let theURL = Bundle.main.url(forResource: namePart, withExtension: extPart) {
+		theShader = theURL.withUnsafeFileSystemRepresentation { fileRep in
+			QutTexture_CreateTextureFromTGAFile(fileRep)
+		}
+	}
+	
+	return theShader
+}
+
+private func makeTextureAttrs(fromName inName: String) -> TQ3AttributeSet? {
+	guard let atts = Q3AttributeSet_New() else {
+		return nil
+	}
+	if var theShader = loadTextureShaderFromResource(named: inName) {
+		Q3AttributeSet_Add(atts, kQ3AttributeTypeSurfaceShader.rawValue, &theShader );
+		Q3Object_Dispose(theShader)
+	}
+	return atts;
+}
+
+func createBallAboutCamera() -> TQ3GroupObject? {
+	guard let theGroup = Q3DisplayGroup_New() else {
+		return nil
+	}
+	var subData = TQ3SubdivisionStyleData(method: kQ3SubdivisionMethodConstant, c1: 100, c2: 100)
+	let subStyle = Q3SubdivisionStyle_New(&subData)
+	Q3Group_AddObject(theGroup, subStyle)
+	defer {
+		Q3Object_Dispose(subStyle)
+	}
+	let tx1 = makeTextureAttrs(fromName: "US_$5_obverse.tga")
+	defer {
+		if let tx1 = tx1 {
+			Q3Object_Dispose(tx1)
+		}
+	}
+	var ballData = TQ3EllipsoidData(origin: TQ3Point3D(x: 0, y: 0, z: 5),
+									orientation: TQ3Vector3D(x: 0, y: 4, z: 0),
+									majorRadius: TQ3Vector3D(x: 0, y: 0, z: 4),
+									minorRadius: TQ3Vector3D(x: 4, y: 0, z: 0),
+									uMin: 0, uMax: 1, vMin: 0, vMax: 1,
+									caps: kQ3EndCapNone.rawValue, interiorAttributeSet: nil, ellipsoidAttributeSet: tx1)
+	
+	if let ball = Q3Ellipsoid_New(&ballData) {
+		Q3Group_AddObject(theGroup, ball)
+		Q3Object_Dispose(ball)
+	}
+	return theGroup
+}
+
+func createBoxAboutCamera() -> TQ3GeometryObject? {
+	let tx1 = makeTextureAttrs(fromName: "1.tga")
+	defer {
+		if let tx1 = tx1 {
+			Q3Object_Dispose(tx1)
+		}
+	}
+	let tx2 = makeTextureAttrs(fromName: "2.tga")
+	defer {
+		if let tx2 = tx2 {
+			Q3Object_Dispose(tx2)
+		}
+	}
+	let tx3 = makeTextureAttrs(fromName: "3.tga")
+	defer {
+		if let tx3 = tx3 {
+			Q3Object_Dispose(tx3)
+		}
+	}
+	let tx4 = makeTextureAttrs(fromName: "4.tga")
+	defer {
+		if let tx4 = tx4 {
+			Q3Object_Dispose(tx4)
+		}
+	}
+	let tx5 = makeTextureAttrs(fromName: "5.tga")
+	defer {
+		if let tx5 = tx5 {
+			Q3Object_Dispose(tx5)
+		}
+	}
+	let tx6 = makeTextureAttrs(fromName: "6.tga")
+	defer {
+		if let tx6 = tx6 {
+			Q3Object_Dispose(tx6)
+		}
+	}
+	var faceAtts: [TQ3AttributeSet?] = [tx1, tx2, tx3, tx4, tx5, tx6]
+	var boxData = TQ3BoxData(origin: TQ3Point3D(x: -2, y: -2, z: 3),
+							 orientation: TQ3Vector3D(x: 0, y: 0, z: 4),
+							 majorAxis: TQ3Vector3D(x: 4, y: 0, z: 0),
+							 minorAxis: TQ3Vector3D(x: 0, y: 4, z: 0),
+							 faceAttributeSet: &faceAtts,
+							 boxAttributeSet: nil)
+	
+	return Q3Box_New(&boxData)
+}
+
+
+func createSubdividedBoxAboutCamera(_ inView: TQ3ViewObject) -> TQ3GroupObject? {
+	guard let theBox = createBoxAboutCamera() else {
+		return nil
+	}
+	var dummyBounds = TQ3BoundingBox()
+	var decomp: TQ3GroupObject? = nil
+	
+	if kQ3Success == Q3View_StartBoundingBox(inView, kQ3ComputeBoundsExact) {
+		repeat {
+			decomp = Q3Geometry_GetDecomposed(theBox, inView)
+		} while Q3View_EndBoundingBox(inView, &dummyBounds) == kQ3ViewStatusRetraverse
+	}
+	
+	guard let decomp = decomp else {
+		return nil
+	}
+
+	let iter = CQ3Group(group: decomp, type: kQ3GeometryTypeTriMesh);
+	for theItem in iter {
+		guard let subItem = SubdivideTriMesh(theItem.rawValue, 4) else {
+			continue
+		}
+		let subNaked = Q3TriMesh_GetNakedGeometry(subItem)
+		Q3TriMesh_SetNakedGeometry(theItem.rawValue, subNaked)
+		Q3Object_Dispose(subNaked)
+		Q3Object_Dispose(subItem)
+	}
+
+	return decomp
+}

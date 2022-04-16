@@ -25,6 +25,8 @@
 		55BD631B2803FDF700CDEA64 /* QMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD63182803FDF700CDEA64 /* QMath.swift */; };
 		55BD631C2803FDF700CDEA64 /* QTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD63192803FDF700CDEA64 /* QTypes.swift */; };
 		55BD631D2803FDF700CDEA64 /* QTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD63192803FDF700CDEA64 /* QTypes.swift */; };
+		55FE611E280AB4270031B00D /* QGroupIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE611D280AB4270031B00D /* QGroupIterator.swift */; };
+		55FE611F280AB4270031B00D /* QGroupIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FE611D280AB4270031B00D /* QGroupIterator.swift */; };
 		AB3A7CA6055E63B200CA83BE /* E3GeometryBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AB3A7B87055E63B100CA83BE /* E3GeometryBox.cpp */; };
 		AB3A7CA8055E63B200CA83BE /* E3GeometryCone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AB3A7B89055E63B100CA83BE /* E3GeometryCone.cpp */; };
 		AB3A7CAA055E63B200CA83BE /* E3GeometryCylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AB3A7B8B055E63B100CA83BE /* E3GeometryCylinder.cpp */; };
@@ -578,6 +580,7 @@
 		55BD63182803FDF700CDEA64 /* QMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QMath.swift; sourceTree = "<group>"; };
 		55BD63192803FDF700CDEA64 /* QTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTypes.swift; sourceTree = "<group>"; };
 		55BD631E2803FEB300CDEA64 /* Quesa.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = Quesa.modulemap; sourceTree = "<group>"; };
+		55FE611D280AB4270031B00D /* QGroupIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QGroupIterator.swift; sourceTree = "<group>"; };
 		8D07F2C80486CC7A007CD1D0 /* Quesa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Quesa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB3A7B85055E63B100CA83BE /* E3Geometry.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; path = E3Geometry.cpp; sourceTree = "<group>"; };
 		AB3A7B86055E63B100CA83BE /* E3Geometry.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = E3Geometry.h; sourceTree = "<group>"; };
@@ -970,6 +973,7 @@
 			children = (
 				55BD63182803FDF700CDEA64 /* QMath.swift */,
 				55BD63192803FDF700CDEA64 /* QTypes.swift */,
+				55FE611D280AB4270031B00D /* QGroupIterator.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -1655,6 +1659,7 @@
 				AB3A7CA6055E63B200CA83BE /* E3GeometryBox.cpp in Sources */,
 				AB3A7CA8055E63B200CA83BE /* E3GeometryCone.cpp in Sources */,
 				AB3A7CAA055E63B200CA83BE /* E3GeometryCylinder.cpp in Sources */,
+				55FE611E280AB4270031B00D /* QGroupIterator.swift in Sources */,
 				AB3A7CAC055E63B200CA83BE /* E3GeometryDisk.cpp in Sources */,
 				AB3A7CAE055E63B200CA83BE /* E3GeometryEllipse.cpp in Sources */,
 				AB3A7CB0055E63B200CA83BE /* E3GeometryEllipsoid.cpp in Sources */,
@@ -2029,6 +2034,7 @@
 				BE5EE8DA26191CF90049B72A /* E3Texture.cpp in Sources */,
 				BE5EE8DB26191CF90049B72A /* E3Transform.cpp in Sources */,
 				BE5EE8DC26191CF90049B72A /* E3View.cpp in Sources */,
+				55FE611F280AB4270031B00D /* QGroupIterator.swift in Sources */,
 				BE5EE8E026191CF90049B72A /* GNGeometry.cpp in Sources */,
 				BE5EE8E126191CF90049B72A /* GNRegister.cpp in Sources */,
 				BE5EE8E226191CF90049B72A /* GNRenderer.cpp in Sources */,

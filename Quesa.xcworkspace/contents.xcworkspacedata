@@ -11,9 +11,6 @@
       location = "group:SDK/Examples/Geom Test/Geom Test.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SDK/Examples/StereoDemo/StereoDemo.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:SDK/Extras/Cocoa Example/Quesa3DView/Quesa3DView.xcodeproj">
    </FileRef>
    <FileRef

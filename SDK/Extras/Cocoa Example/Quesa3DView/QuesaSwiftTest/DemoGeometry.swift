@@ -81,16 +81,16 @@ func createGeomBox() -> TQ3GeometryObject? {
 	var theBox: TQ3GeometryObject?
 	
 	// Set up the data
-	Q3Point3D_Set(&boxData.origin,      -0.5, -1.0,  0.5);
-	Q3Vector3D_Set(&boxData.orientation, 0.0,  2.0,  0.0);
-	Q3Vector3D_Set(&boxData.majorAxis,   0.0,  0.0,  1.0);
-	Q3Vector3D_Set(&boxData.minorAxis,   1.0,  0.0,  0.0);
-	boxData.boxAttributeSet  = nil;
+	Q3Point3D_Set(&boxData.origin,      -0.5, -1.0,  0.5)
+	Q3Vector3D_Set(&boxData.orientation, 0.0,  2.0,  0.0)
+	Q3Vector3D_Set(&boxData.majorAxis,   0.0,  0.0,  1.0)
+	Q3Vector3D_Set(&boxData.minorAxis,   1.0,  0.0,  0.0)
+	boxData.boxAttributeSet  = nil
 	
 	for n in 0 ..< 6 {
-		faceAttributes[n] = Q3AttributeSet_New();
+		faceAttributes[n] = Q3AttributeSet_New()
 		if let faceAttrib = faceAttributes[n] {
-			Q3AttributeSet_Add(faceAttrib, TQ3AttributeType(kQ3AttributeTypeDiffuseColor.rawValue), &faceColour[n]);
+			Q3AttributeSet_Add(faceAttrib, TQ3AttributeType(kQ3AttributeTypeDiffuseColor.rawValue), &faceColour[n])
 		}
 	}
 	defer {
@@ -183,76 +183,63 @@ func createGeomCone() -> TQ3GeometryObject! {
 
 /// Create a Cylinder object.
 func createGeomCylinder() -> TQ3GeometryObject! {
-	/*
-	 TQ3ColorRGB			topColour    = { 0.0f, 0.0f, 1.0f };
-		 TQ3ColorRGB			bottomColour = { 0.0f, 1.0f, 0.0f };
-		 TQ3ColorRGB			faceColour   = { 1.0f, 0.0f, 0.0f };
-		 TQ3ColorRGB			specColour	 = { 1.0f, 1.0f, 0.5f };
-		 TQ3CylinderData		cylinderData;
-		 TQ3GeometryObject	theCylinder;
+	var topColour =		TQ3ColorRGB(r: 0.0, g: 0.0, b: 1.0)
+	var bottomColour =	TQ3ColorRGB(r: 0.0, g: 1.0, b: 0.0)
+	var faceColour =	TQ3ColorRGB(r: 1.0, g: 0.0, b: 0.0)
+	var specColour =	TQ3ColorRGB(r: 1.0, g: 1.0, b: 0.5)
+	
+	var cylinderData = TQ3CylinderData()
+	
+	// Set up the data
+	cylinderData.origin = TQ3Point3D(x: 0.0, y: -1.0, z: 0.0)
+	cylinderData.orientation = TQ3Vector3D(x: 0, y: 2, z: 0)
+	cylinderData.majorRadius = TQ3Vector3D(x: 0, y: 0, z: 1)
+	cylinderData.minorRadius = TQ3Vector3D(x: 1, y: 0, z: 0)
+	cylinderData.uMin = 0.0
+	cylinderData.uMax = 1.0
+	cylinderData.vMin = 0.0
+	cylinderData.vMax = 1.0
+	cylinderData.caps = kQ3EndCapMaskBottom.rawValue | kQ3EndCapMaskTop.rawValue
 
+	cylinderData.cylinderAttributeSet = Q3AttributeSet_New()
+	if let attrSet = cylinderData.cylinderAttributeSet {
+		Q3AttributeSet_Add(attrSet, kQ3AttributeTypeSpecularColor.rawValue, &specColour)
+	}
 
+	cylinderData.faceAttributeSet = Q3AttributeSet_New()
+	if let attrSet = cylinderData.faceAttributeSet {
+		Q3AttributeSet_Add(attrSet, kQ3AttributeTypeDiffuseColor.rawValue, &faceColour)
+	}
 
-		 // Set up the data
-		 Q3Point3D_Set(&cylinderData.origin,       0.0f, -1.0f,  0.0f);
-		 Q3Vector3D_Set(&cylinderData.orientation, 0.0f,  2.0f,  0.0f);
-		 Q3Vector3D_Set(&cylinderData.majorRadius, 0.0f,  0.0f,  1.0f);
-		 Q3Vector3D_Set(&cylinderData.minorRadius, 1.0f,  0.0f,  0.0f);
-		 cylinderData.uMin = 0.0f;
-		 cylinderData.uMax = 1.0f;
-		 cylinderData.vMin = 0.0f;
-		 cylinderData.vMax = 1.0f;
-		 cylinderData.caps = kQ3EndCapMaskBottom | kQ3EndCapMaskTop;
+	cylinderData.topAttributeSet = Q3AttributeSet_New()
+	if let attrSet = cylinderData.topAttributeSet {
+		Q3AttributeSet_Add(attrSet, kQ3AttributeTypeDiffuseColor.rawValue, &topColour)
+	}
 
-		 cylinderData.cylinderAttributeSet     = NULL;
-		 cylinderData.faceAttributeSet     = NULL;
-		 cylinderData.interiorAttributeSet = NULL;
-		 cylinderData.topAttributeSet   = NULL;
-		 cylinderData.bottomAttributeSet   = NULL;
+	cylinderData.bottomAttributeSet = Q3AttributeSet_New()
+	if let attrSet = cylinderData.bottomAttributeSet {
+		Q3AttributeSet_Add(attrSet, kQ3AttributeTypeDiffuseColor.rawValue, &bottomColour)
+	}
 
+	defer {
+		if let attrSet = cylinderData.cylinderAttributeSet {
+			Q3Object_Dispose(attrSet)
+		}
 
-		 cylinderData.cylinderAttributeSet = Q3AttributeSet_New();
-		 if (cylinderData.cylinderAttributeSet != NULL)
-			 Q3AttributeSet_Add(cylinderData.cylinderAttributeSet, kQ3AttributeTypeSpecularColor, &specColour);
+		if let attrSet = cylinderData.faceAttributeSet {
+			Q3Object_Dispose(attrSet)
+		}
 
-		 cylinderData.faceAttributeSet = Q3AttributeSet_New();
-		 if (cylinderData.faceAttributeSet != NULL)
-			 Q3AttributeSet_Add(cylinderData.faceAttributeSet, kQ3AttributeTypeDiffuseColor, &faceColour);
+		if let attrSet = cylinderData.topAttributeSet {
+			Q3Object_Dispose(attrSet)
+		}
 
-		 cylinderData.topAttributeSet = Q3AttributeSet_New();
-		 if (cylinderData.topAttributeSet != NULL)
-			 Q3AttributeSet_Add(cylinderData.topAttributeSet, kQ3AttributeTypeDiffuseColor, &topColour);
-
-		 cylinderData.bottomAttributeSet = Q3AttributeSet_New();
-		 if (cylinderData.bottomAttributeSet != NULL)
-			 Q3AttributeSet_Add(cylinderData.bottomAttributeSet, kQ3AttributeTypeDiffuseColor, &bottomColour);
-
-
-
-		 // Create the geometry
-		 theCylinder = Q3Cylinder_New(&cylinderData);
-
-
-
-		 // Clean up
-		 if (cylinderData.cylinderAttributeSet != NULL)
-			 Q3Object_Dispose(cylinderData.cylinderAttributeSet);
-			 
-		 if (cylinderData.interiorAttributeSet != NULL)
-			 Q3Object_Dispose(cylinderData.interiorAttributeSet);
-			 
-		 if (cylinderData.faceAttributeSet != NULL)
-			 Q3Object_Dispose(cylinderData.faceAttributeSet);
-			 
-		 if (cylinderData.topAttributeSet != NULL)
-			 Q3Object_Dispose(cylinderData.topAttributeSet);
-
-		 if (cylinderData.bottomAttributeSet != NULL)
-			 Q3Object_Dispose(cylinderData.bottomAttributeSet);
-			 
-		 return(theCylinder);
-	 */
-	return nil
+		if let attrSet = cylinderData.bottomAttributeSet {
+			Q3Object_Dispose(attrSet)
+		}
+	}
+	
+	return Q3Cylinder_New(&cylinderData)
 }
 
 /// Create a Disk object.
@@ -269,7 +256,7 @@ func createGeomDisk() -> TQ3GeometryObject! {
 	diskData.vMin = 0.0
 	diskData.vMax = 1.0
 
-	diskData.diskAttributeSet = Q3AttributeSet_New();
+	diskData.diskAttributeSet = Q3AttributeSet_New()
 	if let attrSet = diskData.diskAttributeSet {
 		Q3AttributeSet_Add(attrSet, kQ3AttributeTypeDiffuseColor.rawValue, &diskColour)
 	}
@@ -296,7 +283,7 @@ func createGeomEllipse() -> TQ3GeometryObject! {
 	ellipseData.uMin = 0.0
 	ellipseData.uMax = 0.75
 
-	ellipseData.ellipseAttributeSet = Q3AttributeSet_New();
+	ellipseData.ellipseAttributeSet = Q3AttributeSet_New()
 	if let attrSet = ellipseData.ellipseAttributeSet {
 		Q3AttributeSet_Add(attrSet, kQ3AttributeTypeDiffuseColor.rawValue, &ellipseColour)
 	}
@@ -324,7 +311,7 @@ func createGeomEllipsoid() -> TQ3GeometryObject! {
 										 ellipsoidAttributeSet: nil)
 	
 	// Set up the data
-	ellipsoidData.ellipsoidAttributeSet = Q3AttributeSet_New();
+	ellipsoidData.ellipsoidAttributeSet = Q3AttributeSet_New()
 	if let ellipsDat = ellipsoidData.ellipsoidAttributeSet {
 		Q3AttributeSet_Add(ellipsDat, kQ3AttributeTypeDiffuseColor.rawValue, &ellipsoidColour)
 	}
@@ -342,73 +329,54 @@ func createGeomEllipsoid() -> TQ3GeometryObject! {
 
 /// Create an General Polygon object.
 func createGeomGeneralPolygon() -> TQ3GeometryObject! {
-	/*
-	 TQ3Point3D						vertPoints[6] = { {-0.5f, -1.0f, 0.0f},
-														   {-1.0f,  1.0f, 0.0f},
-														   {-0.2f,  0.0f, 0.0f},
-														   { 0.2f,  0.0f, 0.0f},
-														   { 1.0f,  1.0f, 0.0f},
-														   { 0.5f, -1.0f, 0.0f} };
-		 TQ3ColorRGB						vertColours[6] = { {1.0f, 0.0f, 0.0f},
-															{0.0f, 1.0f, 0.0f},
-															{0.0f, 0.0f, 1.0f},
-															{1.0f, 0.0f, 1.0f},
-															{1.0f, 1.0f, 0.0f},
-															{0.0f, 1.0f, 1.0f} };
-		 TQ3GeneralPolygonData			generalPolygonData;
-		 TQ3GeneralPolygonContourData	theContours[1];
-		 TQ3Vertex3D						theVertices[6];
-		 TQ3GeometryObject				theGeneralPoly;
-		 TQ3Param2D						vertUVs[6];
-		 TQ3Uns32						n;
+	let vertPoints = [TQ3Point3D(x: -0.5, y: -1, z: 0),
+					  TQ3Point3D(x: -1.0, y:  1, z: 0),
+					  TQ3Point3D(x: -0.2, y:  0, z: 0),
+					  TQ3Point3D(x:  0.2, y:  0, z: 0),
+					  TQ3Point3D(x:  1.0, y:  1, z: 0),
+					  TQ3Point3D(x:  0.5, y: -1, z: 0)]
+	var vertColours = [TQ3ColorRGB(r: 1, g: 0, b: 0),
+					   TQ3ColorRGB(r: 0, g: 1, b: 0),
+					   TQ3ColorRGB(r: 0, g: 0, b: 1),
+					   TQ3ColorRGB(r: 1, g: 0, b: 1),
+					   TQ3ColorRGB(r: 1, g: 1, b: 0),
+					   TQ3ColorRGB(r: 0, g: 1, b: 1)]
+	var vertUVs = [TQ3Param2D]()
+	var theVertices = [TQ3Vertex3D](repeating: TQ3Vertex3D(), count: 6)
+	
+	createUVsFromPoints(vertPoints, &vertUVs)
+	
+	return theVertices.withUnsafeMutableBufferPointer { bufPtr -> TQ3GeometryObject? in
+		var theContours = [TQ3GeneralPolygonContourData(numVertices: TQ3Uns32(bufPtr.count), vertices: bufPtr.baseAddress!)]
+		
+		var generalPolygonData = TQ3GeneralPolygonData(numContours: 1, contours: &theContours, shapeHint: kQ3GeneralPolygonShapeHintComplex, generalPolygonAttributeSet: nil)
+		
+		for n in 0 ..< 6 {
+			theContours[0].vertices[n].point        = vertPoints[n]
+			theContours[0].vertices[n].attributeSet = Q3AttributeSet_New()
+			if let attrSet = theContours[0].vertices[n].attributeSet {
+				Q3AttributeSet_Add(attrSet,
+								   kQ3AttributeTypeDiffuseColor.rawValue,
+								   &vertColours[n])
 
-
-
-		 // Set up the data
-		 generalPolygonData.numContours                = 1;
-		 generalPolygonData.contours                   = theContours;
-		 generalPolygonData.shapeHint                  = kQ3GeneralPolygonShapeHintComplex;
-		 generalPolygonData.generalPolygonAttributeSet = NULL;
-
-		 theContours[0].numVertices = 6;
-		 theContours[0].vertices = theVertices;
-
-		 createUVsFromPoints(theContours[0].numVertices, vertPoints, vertUVs);
-		 
-		 for (n = 0; n < 6; n++)
-			 {
-			 theContours[0].vertices[n].point        = vertPoints[n];
-			 theContours[0].vertices[n].attributeSet = Q3AttributeSet_New();
-
-			 if (theContours[0].vertices[n].attributeSet != NULL)
-				 {
-				 Q3AttributeSet_Add(theContours[0].vertices[n].attributeSet,
-									 kQ3AttributeTypeDiffuseColor,
-									 &vertColours[n]);
-
-				 Q3AttributeSet_Add(theContours[0].vertices[n].attributeSet,
-									 kQ3AttributeTypeSurfaceUV,
-									 &vertUVs[n]);
-				 }
-			 }
-
-
-
-		 // Create the geometry
-		 theGeneralPoly = Q3GeneralPolygon_New(&generalPolygonData);
-
-
-
-		 // Clean up
-		 for (n = 0; n < 6; n++)
-			 {
-			 if (theContours[0].vertices[n].attributeSet != NULL)
-				 Q3Object_Dispose(theContours[0].vertices[n].attributeSet);
-			 }
-			 
-		 return(theGeneralPoly);
-	 */
-	return nil
+				Q3AttributeSet_Add(attrSet,
+								   kQ3AttributeTypeSurfaceUV.rawValue,
+								   &vertUVs[n])
+			}
+		}
+		
+		defer {
+			// Clean up
+			for n in 0 ..< 6 {
+				if let attrSet = theContours[0].vertices[n].attributeSet {
+					Q3Object_Dispose(attrSet)
+				}
+			}
+		}
+		
+		// Create the geometry
+		return Q3GeneralPolygon_New(&generalPolygonData)
+	}
 }
 
 /// Create a Line object.
@@ -450,7 +418,7 @@ func createGeomLine() -> TQ3GeometryObject! {
 	}
 	
 	// Create the geometry
-	return Q3Line_New(&lineData);
+	return Q3Line_New(&lineData)
 }
 
 /// Create a Marker object.
@@ -478,11 +446,10 @@ func createGeomMarker() -> TQ3GeometryObject! {
 			if let markerAttrib = markerData.markerAttributeSet {
 				Q3Object_Dispose(markerAttrib)
 			}
-
 		}
 		
 		// Create the geometry
-		return Q3Marker_New(&markerData);
+		return Q3Marker_New(&markerData)
 	}
 }
 
@@ -523,7 +490,7 @@ func createGeomMesh() -> TQ3GeometryObject! {
 	}
 	
 	// Add the face
-	let theAttributes = Q3AttributeSet_New();
+	let theAttributes = Q3AttributeSet_New()
 	if let theAttributes = theAttributes {
 		Q3AttributeSet_Add(theAttributes, kQ3AttributeTypeDiffuseColor.rawValue, &theColour)
 		
@@ -543,190 +510,120 @@ func createGeomMesh() -> TQ3GeometryObject! {
 
 /// Create a NURB curve object.
 func createGeomNURBCurve() -> TQ3GeometryObject! {
-	/*
-	 TQ3ColorRGB			theColour = { 0.8f, 0.2f, 0.6f };
-		 TQ3RationalPoint4D	thePoints[7] = { { -2.0f,  0.0f,  0.0f, 1.0f },
-											  { -1.0f,  1.0f,  0.0f, 1.0f },
-											  { -0.5f,  0.0f,  0.0f, 1.0f },
-											  {  0.0f,  1.0f,  0.0f, 1.0f },
-											  {  0.5f,  0.0f,  0.0f, 1.0f },
-											  {  1.0f,  1.0f,  0.0f, 1.0f },
-											  {  2.0f,  0.0f,  0.0f, 1.0f } };
-		 float				theKnots[11] = { 0.0f,  0.0f, 0.0f,  0.0f,
-											  0.25f, 0.5f, 0.75f, 1.0f,
-											  1.0f,  1.0f, 1.0f };
-		 TQ3NURBCurveData	curveData;
-		 TQ3GeometryObject	theCurve;
+	var theColour = TQ3ColorRGB(r: 0.8, g: 0.2, b: 0.6)
+	var thePoints = [TQ3RationalPoint4D(x: -2.0, y:  0.0, z:  0.0, w: 1),
+					 TQ3RationalPoint4D(x: -1.0, y:  1.0, z:  0.0, w: 1),
+					 TQ3RationalPoint4D(x: -0.5, y:  0.0, z:  0.0, w: 1),
+					 TQ3RationalPoint4D(x:  0.0, y:  1.0, z:  0.0, w: 1),
+					 TQ3RationalPoint4D(x:  0.5, y:  0.0, z:  0.0, w: 1),
+					 TQ3RationalPoint4D(x:  1.0, y:  1.0, z:  0.0, w: 1),
+					 TQ3RationalPoint4D(x:  2.0, y:  0.0, z:  0.0, w: 1)]
+	var theKnots: [Float] = [0.0,  0.0, 0.0,  0.0,
+							 0.25, 0.5, 0.75, 1.0,
+							 1.0,  1.0, 1.0]
+	
+	var curveData = TQ3NURBCurveData(order: 4, numPoints: 7, controlPoints: &thePoints, knots: &theKnots, curveAttributeSet: Q3AttributeSet_New())
+	
+	if let attrSet = curveData.curveAttributeSet {
+		Q3AttributeSet_Add(attrSet, kQ3AttributeTypeDiffuseColor.rawValue, &theColour)
+	}
 
-
-
-		 // Set up the data
-		 curveData.order 			= 4;
-		 curveData.numPoints			= 7;
-		 curveData.controlPoints		= thePoints;
-		 curveData.knots 			= theKnots;
-		 curveData.curveAttributeSet = Q3AttributeSet_New();
-		 
-		 if (curveData.curveAttributeSet != NULL)
-			 Q3AttributeSet_Add(curveData.curveAttributeSet, kQ3AttributeTypeDiffuseColor, &theColour);
-
-
-
-		 // Create the geometry
-		 theCurve = Q3NURBCurve_New(&curveData);
-
-
-
-		 // Clean up
-		 if (curveData.curveAttributeSet != NULL)
-			 Q3Object_Dispose(curveData.curveAttributeSet);
-
-		 return(theCurve);
-	 */
-	return nil
+	defer {
+		if let attrSet = curveData.curveAttributeSet {
+			Q3Object_Dispose(attrSet)
+		}
+	}
+	
+	return Q3NURBCurve_New(&curveData)
 }
 
 /// Create a NURB patch object.
 func createGeomNURBPatch() -> TQ3GeometryObject! {
-	/*
-	 TQ3RationalPoint4D		thePoints[12] = { { -1.5f, -1.0f,  0.0f, 1.0f },
-												   { -0.5f, -1.0f,  2.0f, 1.0f },
-												   {  0.5f, -1.0f,  0.0f, 1.0f },
-												   {  1.5f, -1.0f,  0.0f, 1.0f },
-
-												   { -1.5f, -0.0f,  0.0f, 1.0f },
-												   { -0.5f, -0.0f,  2.0f, 1.0f },
-												   {  0.5f, -0.0f, -2.0f, 1.0f },
-												   {  1.5f, -0.0f, -2.0f, 1.0f },
-
-												   { -1.5f,  1.0f,  0.0f, 1.0f },
-												   { -0.5f,  1.0f,  0.0f, 1.0f },
-												   {  0.5f,  1.0f,  0.0f, 1.0f },
-												   {  1.5f,  1.0f,  0.0f, 1.0f } };
-
-		 float					vKnots[6] = { 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f };
-		 float					uKnots[8] = { 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f };
-
-		 TQ3RationalPoint3D		trimPointsZero[5] = { { 0.1f, 0.1f, 1.0f },
-													   { 0.9f, 0.1f, 1.0f },
-													   { 0.4f, 0.4f, 1.0f },
-													   { 0.1f, 0.4f, 1.0f },
-													   { 0.1f, 0.1f, 1.0f } };
-		 TQ3RationalPoint3D		trimPointsOne[5] =  { { 0.3f, 0.6f, 1.0f },
-													   { 0.9f, 0.6f, 1.0f },
-													   { 0.4f, 0.9f, 1.0f },
-													   { 0.2f, 0.9f, 1.0f },
-													   { 0.3f, 0.6f, 1.0f } };
-
-		 float					trimKnotsZero[9] = { 0.0f, 0.0f, 0.0f, 0.0f, 0.5f,
-													  1.0f, 1.0f, 1.0f, 1.0f };
-		 float					trimKnotsOne[9]  = { 0.0f, 0.0f, 0.0f, 0.0f, 0.5f,
-													  1.0f, 1.0f, 1.0f, 1.0f };
-
-		 TQ3ColorRGB							theColour = { 0.9f, 0.2f, 0.9f };
-		 TQ3NURBPatchTrimCurveData			trimCurveZero, trimCurveOne;
-		 TQ3NURBPatchTrimLoopData			trimLoops[2];
-		 TQ3NURBPatchData					patchData;
-		 TQ3GeometryObject					thePatch;
-
-
-
-		 // Set up the data
-		 trimLoops[0].numTrimCurves 	= 1;
-		 trimLoops[0].trimCurves		= &trimCurveZero;
-		 trimLoops[1].numTrimCurves 	= 1;
-		 trimLoops[1].trimCurves		= &trimCurveOne;
-
-		 trimCurveZero.order			= 4;
-		 trimCurveZero.numPoints		= 5;
-		 trimCurveZero.knots			= trimKnotsZero;
-		 trimCurveZero.controlPoints = trimPointsZero;
-
-		 trimCurveOne.order		   = 4;
-		 trimCurveOne.numPoints	   = 5;
-		 trimCurveOne.knots		   = trimKnotsOne;
-		 trimCurveOne.controlPoints = trimPointsOne;
-								 
-		 patchData.uOrder		= 4;
-		 patchData.vOrder		= 3;
-		 patchData.numColumns	= 4;
-		 patchData.numRows		= 3;
-		 patchData.uKnots		= uKnots;
-		 patchData.vKnots		= vKnots;
-		 patchData.controlPoints = thePoints;
-		 patchData.numTrimLoops	= 0;
-		 patchData.trimLoops 	= NULL;
-
-		 patchData.patchAttributeSet = Q3AttributeSet_New();
-		 if (patchData.patchAttributeSet != NULL)
-			 Q3AttributeSet_Add(patchData.patchAttributeSet, kQ3AttributeTypeDiffuseColor, &theColour);
-
-
-
-		 // Create the geometry
-		 thePatch = Q3NURBPatch_New(&patchData);
-
-
-
-		 // Clean up
-		 Q3Object_Dispose(patchData.patchAttributeSet);
-
-		 return(thePatch);
-	 */
-	return nil
+	var thePoints = [TQ3RationalPoint4D(x: -1.5, y: -1.0, z:  0.0, w: 1),
+					 TQ3RationalPoint4D(x: -0.5, y: -1.0, z:  2.0, w: 1),
+					 TQ3RationalPoint4D(x:  0.5, y: -1.0, z:  0.0, w: 1),
+					 TQ3RationalPoint4D(x:  1.5, y: -1.0, z:  0.0, w: 1),
+					 
+					 TQ3RationalPoint4D(x: -1.5, y: -0.0, z:  0.0, w: 1),
+					 TQ3RationalPoint4D(x: -0.5, y: -0.0, z:  2.0, w: 1),
+					 TQ3RationalPoint4D(x:  0.5, y: -0.0, z: -2.0, w: 1),
+					 TQ3RationalPoint4D(x:  1.5, y: -0.0, z: -2.0, w: 1),
+					 
+					 TQ3RationalPoint4D(x: -1.5, y:  1.0, z:  0.0, w: 1),
+					 TQ3RationalPoint4D(x: -0.5, y:  1.0, z:  0.0, w: 1),
+					 TQ3RationalPoint4D(x:  0.5, y:  1.0, z:  0.0, w: 1),
+					 TQ3RationalPoint4D(x:  1.5, y:  1.0, z:  0.0, w: 1)]
+	
+	var vKnots: [Float] = [0.0, 0.0, 0.0, 1.0, 1.0, 1.0]
+	var uKnots: [Float] = [0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0]
+	
+	var trimPointsZero = [TQ3RationalPoint3D(x: 0.1, y: 0.1, w: 1.0),
+						  TQ3RationalPoint3D(x: 0.9, y: 0.1, w: 1.0),
+						  TQ3RationalPoint3D(x: 0.4, y: 0.4, w: 1.0),
+						  TQ3RationalPoint3D(x: 0.1, y: 0.4, w: 1.0),
+						  TQ3RationalPoint3D(x: 0.1, y: 0.1, w: 1.0)]
+	var trimPointsOne = [TQ3RationalPoint3D(x: 0.3, y: 0.6, w: 1.0),
+						 TQ3RationalPoint3D(x: 0.9, y: 0.6, w: 1.0),
+						 TQ3RationalPoint3D(x: 0.4, y: 0.9, w: 1.0),
+						 TQ3RationalPoint3D(x: 0.2, y: 0.9, w: 1.0),
+						 TQ3RationalPoint3D(x: 0.3, y: 0.6, w: 1.0)]
+	
+	var trimKnotsZero: [Float] = [0.0, 0.0, 0.0, 0.0, 0.5,
+								  1.0, 1.0, 1.0, 1.0]
+	var trimKnotsOne: [Float] = [0.0, 0.0, 0.0, 0.0, 0.5,
+								 1.0, 1.0, 1.0, 1.0]
+	
+	var theColour = TQ3ColorRGB(r: 0.9, g: 0.2, b: 0.9)
+	var trimCurveZero = TQ3NURBPatchTrimCurveData(order: 4, numPoints: 5, controlPoints: &trimPointsZero, knots: &trimKnotsZero)
+	var trimCurveOne = TQ3NURBPatchTrimCurveData(order: 4, numPoints: 5, controlPoints: &trimPointsOne, knots: &trimKnotsOne)
+	
+	var trimLoops = [TQ3NURBPatchTrimLoopData(numTrimCurves: 1, trimCurves: &trimCurveZero), TQ3NURBPatchTrimLoopData(numTrimCurves: 1, trimCurves: &trimCurveOne)]
+	
+	var patchData = TQ3NURBPatchData(uOrder: 4, vOrder: 3, numRows: 3, numColumns: 4, controlPoints: &thePoints, uKnots: &uKnots, vKnots: &vKnots, numTrimLoops: 0, trimLoops: nil, patchAttributeSet: nil)
+	
+	patchData.patchAttributeSet = Q3AttributeSet_New()
+	if let attrSet = patchData.patchAttributeSet {
+		Q3AttributeSet_Add(attrSet, kQ3AttributeTypeDiffuseColor.rawValue, &theColour)
+	}
+	
+	defer {
+		if let attrSet = patchData.patchAttributeSet {
+			Q3Object_Dispose(attrSet)
+		}
+	}
+	
+	return Q3NURBPatch_New(&patchData)
 }
 
 /// Create a Pixmap marker object.
 func createGeomPixmapMarker() -> TQ3GeometryObject! {
-	/*
-	 TQ3PixmapMarkerData		pixmapMarkerData = { { -1.0f, 0.5f, 0.5f },
-														-50, -50,
-													{ NULL, 0, 0, 0, 32,
-													  kQ3PixelTypeRGB32,
-													  kQ3EndianBig,
-													  kQ3EndianBig },
-													  NULL };
-		 TQ3Uns32				theImage[64][64];
-		 TQ3Uns32				x, y, r, g;
-		 TQ3GeometryObject		theMarker;
+	var theImage = [TQ3Uns32](repeating: 0, count: 64 * 64)
+	for y in 0 ..< 64 {
+		let g = TQ3Uns32(y * 4)
+		for x in 0 ..< 64 {
+			let r = TQ3Uns32(x * 4)
+			theImage[y * 64 + x] = (r << 16) | (g << 8)
+		}
+	}
+	
+	let bufStore = theImage.withUnsafeBufferPointer { urbp in
+		urbp.withMemoryRebound(to: UInt8.self) { buf2 in
+			Q3MemoryStorage_New(buf2.baseAddress, TQ3Uns32(buf2.count))
+		}
+	}
+	var pixmapMarkerData = TQ3PixmapMarkerData(position: TQ3Point3D(x: -1, y: 0.5, z: 0.5), xOffset: -50, yOffset: -50, pixmap: TQ3StoragePixmap(image: bufStore, width: 64, height: 64, rowBytes: 0, pixelSize: 32, pixelType: kQ3PixelTypeRGB32, bitOrder: kQ3EndianBig, byteOrder: kQ3EndianBig), pixmapMarkerAttributeSet: nil)
+	pixmapMarkerData.pixmap.rowBytes = pixmapMarkerData.pixmap.width * UInt32(MemoryLayout<TQ3Uns32>.stride)
 
-
-
-		 // Create an image
-		 for (y = 0; y < 64; y++)
-			 {
-			 g = (y * 4);
-			 for (x = 0; x < 64; x++)
-				 {
-				 r = (x * 4);
-				 theImage[y][x] = (r << 16) | (g << 8);
-				 }
-			 }
-
-
-
-		 // Initialise the pixmap
-		 pixmapMarkerData.pixmap.width    = 64;
-		 pixmapMarkerData.pixmap.height   = 64;
-		 pixmapMarkerData.pixmap.rowBytes = pixmapMarkerData.pixmap.width * sizeof(TQ3Uns32);
-		 pixmapMarkerData.pixmap.image    = Q3MemoryStorage_New((TQ3Uns8 *) theImage, sizeof(theImage));
-
-		 if (pixmapMarkerData.pixmap.image == NULL)
-			 return(NULL);
-
-
-
-		 // Create the geometry
-		 theMarker = Q3PixmapMarker_New(&pixmapMarkerData);
-
-
-
-		 // Clean up
-		 Q3Object_Dispose(pixmapMarkerData.pixmap.image);
-
-		 return(theMarker);
-	 */
-	return nil
+	// Always true!
+//	if pixmapMarkerData.pixmap.image == nil {
+//		return nil
+//	}
+	
+	defer {
+		Q3Object_Dispose(pixmapMarkerData.pixmap.image)
+	}
+	
+	return Q3PixmapMarker_New(&pixmapMarkerData)
 }
 
 /// Create a Point object.
@@ -734,80 +631,169 @@ func createGeomPoint() -> TQ3GeometryObject! {
 	var pointData =  TQ3PointData(point: TQ3Point3D(x: -1, y: -1, z: -1), pointAttributeSet: nil)
 	
 	// Create the geometry
-	let thePoint = Q3Point_New(&pointData);
+	let thePoint = Q3Point_New(&pointData)
 	
 	return thePoint
 }
 
 /// Create a Polygon object.
 func createGeomPolygon() -> TQ3GeometryObject! {
-	return nil
+	var vertPoints = [TQ3Point3D(x: -0.5, y: -1.0, z: 0.0),
+					  TQ3Point3D(x: -1.0, y:  0.0, z: 0.0),
+					  TQ3Point3D(x:  0.0, y:  1.5, z: 0.0),
+					  TQ3Point3D(x:  1.0, y:  0.0, z: 0.0),
+					  TQ3Point3D(x:  0.5, y: -1.0, z: 0.0)]
+	var vertColours = [TQ3ColorRGB(r: 1.0, g: 0.0, b: 0.0),
+					   TQ3ColorRGB(r: 0.0, g: 1.0, b: 0.0),
+					   TQ3ColorRGB(r: 0.0, g: 0.0, b: 1.0),
+					   TQ3ColorRGB(r: 1.0, g: 1.0, b: 0.0),
+					   TQ3ColorRGB(r: 0.0, g: 1.0, b: 1.0)]
+	var vertUVs = [TQ3Param2D]()
+	var theVertices = [TQ3Vertex3D](repeating: TQ3Vertex3D(), count: vertPoints.count)
+	createUVsFromPoints(vertPoints, &vertUVs)
+	
+	
+	var polygonData = TQ3PolygonData(numVertices: TQ3Uns32(theVertices.count), vertices: &theVertices, polygonAttributeSet: nil)
+
+	for (n, vert) in vertPoints.enumerated() {
+		polygonData.vertices[n].point        = vert
+		polygonData.vertices[n].attributeSet = Q3AttributeSet_New()
+		
+		if let attrSet = polygonData.vertices[n].attributeSet {
+			Q3AttributeSet_Add(attrSet,
+							   kQ3AttributeTypeDiffuseColor.rawValue,
+							   &vertColours[n])
+
+			Q3AttributeSet_Add(attrSet,
+							   kQ3AttributeTypeSurfaceUV.rawValue,
+							   &vertUVs[n])
+		}
+	}
+	
+	defer {
+		for n in 0 ..< vertPoints.count {
+			if let attrSet = polygonData.vertices[n].attributeSet {
+				Q3Object_Dispose(attrSet)
+			}
+		}
+	}
+	
+	return Q3Polygon_New(&polygonData)
 }
 
 /// Create a Polyhedron object.
 func createGeomPolyhedron() -> TQ3GeometryObject! {
-	return nil
+	var theTriangles = [TQ3PolyhedronTriangleData(vertexIndices: (0, 2, 3), edgeFlag: kQ3PolyhedronEdge01.rawValue, triangleAttributeSet: nil),
+						TQ3PolyhedronTriangleData(vertexIndices: (0, 3, 4), edgeFlag: kQ3PolyhedronEdge12.rawValue, triangleAttributeSet: nil),
+						TQ3PolyhedronTriangleData(vertexIndices: (0, 4, 1), edgeFlag: kQ3PolyhedronEdge20.rawValue, triangleAttributeSet: nil),
+						TQ3PolyhedronTriangleData(vertexIndices: (1, 4, 5), edgeFlag: kQ3PolyhedronEdge20.rawValue, triangleAttributeSet: nil),
+						TQ3PolyhedronTriangleData(vertexIndices: (2, 6, 7), edgeFlag: kQ3PolyhedronEdge01.rawValue, triangleAttributeSet: nil),
+						TQ3PolyhedronTriangleData(vertexIndices: (2, 7, 3), edgeFlag: kQ3PolyhedronEdge12.rawValue, triangleAttributeSet: nil),
+						TQ3PolyhedronTriangleData(vertexIndices: (3, 7, 8), edgeFlag: kQ3PolyhedronEdgeNone.rawValue, triangleAttributeSet: nil),
+						TQ3PolyhedronTriangleData(vertexIndices: (3, 8, 4), edgeFlag: kQ3PolyhedronEdge12.rawValue, triangleAttributeSet: nil),
+						TQ3PolyhedronTriangleData(vertexIndices: (4, 8, 9), edgeFlag: kQ3PolyhedronEdgeNone.rawValue, triangleAttributeSet: nil),
+						TQ3PolyhedronTriangleData(vertexIndices: (4, 9, 5), edgeFlag: kQ3PolyhedronEdge12.rawValue, triangleAttributeSet: nil),
+						TQ3PolyhedronTriangleData(vertexIndices: (6, 10, 7), edgeFlag: kQ3PolyhedronEdge01.rawValue, triangleAttributeSet: nil),
+						TQ3PolyhedronTriangleData(vertexIndices: (7, 10, 11), edgeFlag: kQ3PolyhedronEdge12.rawValue, triangleAttributeSet: nil),
+						TQ3PolyhedronTriangleData(vertexIndices: (7, 11, 8), edgeFlag: kQ3PolyhedronEdge20.rawValue, triangleAttributeSet: nil),
+						TQ3PolyhedronTriangleData(vertexIndices: (8, 11, 9), edgeFlag: kQ3PolyhedronEdge12.rawValue, triangleAttributeSet: nil)]
+	let vertPoints = [TQ3Point3D(x: -0.5, y: -1.0, z: 0.0),
+					  TQ3Point3D(x:  0.5, y: -1.0, z: 0.0),
+					  TQ3Point3D(x: -1.0, y: -0.5, z: 0.0),
+					  TQ3Point3D(x: -0.5, y: -0.5, z: 0.0),
+					  TQ3Point3D(x:  0.5, y: -0.5, z: 0.0),
+					  TQ3Point3D(x:  1.0, y: -0.5, z: 0.0),
+					  TQ3Point3D(x: -1.0, y:  0.5, z: 0.0),
+					  TQ3Point3D(x: -0.5, y:  0.5, z: 0.0),
+					  TQ3Point3D(x:  0.5, y:  0.5, z: 0.0),
+					  TQ3Point3D(x:  1.0, y:  0.5, z: 0.0),
+					  TQ3Point3D(x: -0.5, y:  1.0, z: 0.0),
+					  TQ3Point3D(x:  0.5, y:  1.0, z: 0.0)]
+	var vertColours = [TQ3ColorRGB(r: 0.0, g: 0.0, b: 1.0),
+					   TQ3ColorRGB(r: 1.0, g: 0.0, b: 0.0),
+					   TQ3ColorRGB(r: 1.0, g: 0.0, b: 0.0),
+					   TQ3ColorRGB(r: 1.0, g: 1.0, b: 1.0),
+					   TQ3ColorRGB(r: 1.0, g: 1.0, b: 1.0),
+					   TQ3ColorRGB(r: 0.0, g: 0.0, b: 1.0),
+					   TQ3ColorRGB(r: 0.0, g: 0.0, b: 1.0),
+					   TQ3ColorRGB(r: 1.0, g: 1.0, b: 1.0),
+					   TQ3ColorRGB(r: 1.0, g: 1.0, b: 1.0),
+					   TQ3ColorRGB(r: 1.0, g: 0.0, b: 0.0),
+					   TQ3ColorRGB(r: 1.0, g: 0.0, b: 0.0),
+					   TQ3ColorRGB(r: 0.0, g: 0.0, b: 1.0)]
+	var theVertices = [TQ3Vertex3D](repeating: TQ3Vertex3D(), count: vertPoints.count)
+	
+	var polyhedronData = TQ3PolyhedronData(numVertices: 12, vertices: &theVertices, numEdges: 0, edges: nil, numTriangles: TQ3Uns32(theTriangles.count), triangles: &theTriangles, polyhedronAttributeSet: nil)
+	var vertUVs = [TQ3Param2D]()
+	
+	createUVsFromPoints(vertPoints, &vertUVs)
+
+	for (n, vert) in vertPoints.enumerated() {
+		polyhedronData.vertices![n].point        = vert
+		polyhedronData.vertices![n].attributeSet = Q3AttributeSet_New()
+		
+		if let attrSet = polyhedronData.vertices?[n].attributeSet {
+			Q3AttributeSet_Add(attrSet,
+							   kQ3AttributeTypeDiffuseColor.rawValue,
+							   &vertColours[n])
+			
+			Q3AttributeSet_Add(attrSet,
+							   kQ3AttributeTypeSurfaceUV.rawValue,
+							   &vertUVs[n])
+		}
+	}
+	
+	defer {
+		for n in 0 ..< vertPoints.count {
+			if let attrSet = polyhedronData.vertices?[n].attributeSet {
+				Q3Object_Dispose(attrSet)
+			}
+		}
+	}
+	
+	return Q3Polyhedron_New(&polyhedronData)
 }
 
 /// Create a PolyLine object.
 func createGeomPolyLine() -> TQ3GeometryObject! {
-	/*
-	 TQ3Point3D			vertPoints[5] = { {-1.0f, -1.0f, -1.0f},
-											   {-1.0f, -0.5f,  1.0f},
-											   { 1.0f,  0.0f,  1.0f},
-											   { 1.0f,  0.5f, -1.0f},
-											   { 0.0f,  1.0f,  0.0f} };
-		 TQ3ColorRGB			vertColours[5] = { {1.0f, 0.0f, 0.0f},
-												{0.0f, 1.0f, 0.0f},
-												{0.0f, 0.0f, 1.0f},
-												{1.0f, 1.0f, 0.0f},
-												{0.0f, 1.0f, 1.0f} };
-		 TQ3Vertex3D			theVertices[5];
-		 TQ3PolyLineData		polyLineData;
-		 TQ3GeometryObject	thePolyLine;
-		 TQ3Uns32			n;
+	let vertPoints = [TQ3Point3D(x: -1.0, y: -1.0, z: -1.0),
+					  TQ3Point3D(x: -1.0, y: -0.5, z:  1.0),
+					  TQ3Point3D(x:  1.0, y:  0.0, z:  1.0),
+					  TQ3Point3D(x:  1.0, y:  0.5, z: -1.0),
+					  TQ3Point3D(x:  0.0, y:  1.0, z:  0.0)]
+	var vertColours = [TQ3ColorRGB(r: 1.0, g: 0.0, b: 0.0),
+					   TQ3ColorRGB(r: 0.0, g: 1.0, b: 0.0),
+					   TQ3ColorRGB(r: 0.0, g: 0.0, b: 1.0),
+					   TQ3ColorRGB(r: 1.0, g: 1.0, b: 0.0),
+					   TQ3ColorRGB(r: 0.0, g: 1.0, b: 1.0)]
+	var theVertices = [TQ3Vertex3D](repeating: TQ3Vertex3D(), count: vertPoints.count)
+	var polyLineData = TQ3PolyLineData(numVertices: TQ3Uns32(theVertices.count), vertices: &theVertices, segmentAttributeSet: nil, polyLineAttributeSet: nil)
+	
+	for (n, vert) in vertPoints.enumerated() {
+		polyLineData.vertices[n].point        = vert
+		polyLineData.vertices[n].attributeSet = Q3AttributeSet_New()
 
-
-
-		 // Set up the data
-		 polyLineData.numVertices          = 5;
-		 polyLineData.vertices             = theVertices;
-		 polyLineData.polyLineAttributeSet = NULL;
-		 polyLineData.segmentAttributeSet  = NULL;
-
-		 for (n = 0; n < 5; n++)
-			 {
-			 polyLineData.vertices[n].point        = vertPoints[n];
-			 polyLineData.vertices[n].attributeSet = Q3AttributeSet_New();
-
-			 if (polyLineData.vertices[n].attributeSet != NULL)
-				 Q3AttributeSet_Add(polyLineData.vertices[n].attributeSet,
-									 kQ3AttributeTypeDiffuseColor,
-									 &vertColours[n]);
-			 }
-
-
-
-		 // Create the geometry
-		 thePolyLine = Q3PolyLine_New(&polyLineData);
-
-
-
-		 // Clean up
-		 for (n = 0; n < 5; n++)
-			 {
-			 if (polyLineData.vertices[n].attributeSet != NULL)
-				 Q3Object_Dispose(polyLineData.vertices[n].attributeSet);
-			 }
-
-		 return(thePolyLine);
-	 */
-	return nil
+		if let attrSet = polyLineData.vertices[n].attributeSet {
+			Q3AttributeSet_Add(attrSet,
+							   kQ3AttributeTypeDiffuseColor.rawValue,
+							   &vertColours[n])
+		}
+	}
+	
+	defer {
+		for n in 0 ..< 5 {
+			if let attrSet = polyLineData.vertices[n].attributeSet {
+				Q3Object_Dispose(attrSet)
+			}
+		}
+	}
+	
+	return Q3PolyLine_New(&polyLineData)
 }
 
 /// Create the Quesa logo geometry.
 func createGeomQuesa() -> TQ3GroupObject! {
-	var	transformData = TQ3RotateTransformData( axis: kQ3AxisZ, radians: Q3Math_DegreesToRadians(45.0))
+	var	transformData = TQ3RotateTransformData(axis: kQ3AxisZ, radians: Q3Math_DegreesToRadians(45.0))
 	var colourTorus = TQ3ColorRGB(r: 0.19, g: 0.21, b: 0.60)
 	var colourSphere = TQ3ColorRGB(r: 0.66, g: 0.01, b: 0.01)
 	var colourCone = TQ3ColorRGB(r: 0.14, g: 0.42, b: 0.18)
@@ -839,55 +825,55 @@ func createGeomQuesa() -> TQ3GroupObject! {
 	
 	// Create the transform
 	if let theTransform = Q3RotateTransform_New(&transformData) {
-		Q3Group_AddObject(theGroup, theTransform);
-		Q3Object_Dispose(theTransform);
+		Q3Group_AddObject(theGroup, theTransform)
+		Q3Object_Dispose(theTransform)
 	}
 
 	// Create the Torus
-	torusData.torusAttributeSet = Q3AttributeSet_New();
+	torusData.torusAttributeSet = Q3AttributeSet_New()
 	if let tas = torusData.torusAttributeSet {
-		Q3AttributeSet_Add(tas, kQ3AttributeTypeDiffuseColor.rawValue, &colourTorus);
+		Q3AttributeSet_Add(tas, kQ3AttributeTypeDiffuseColor.rawValue, &colourTorus)
 	}
 
 	if let theTorus = Q3Torus_New(&torusData) {
-		Q3Group_AddObject(theGroup, theTorus);
-		Q3Object_Dispose(theTorus);
+		Q3Group_AddObject(theGroup, theTorus)
+		Q3Object_Dispose(theTorus)
 	}
 
 	
 	// Create the Sphere
-	sphereData.ellipsoidAttributeSet = Q3AttributeSet_New();
+	sphereData.ellipsoidAttributeSet = Q3AttributeSet_New()
 	if let eas = sphereData.ellipsoidAttributeSet {
-		Q3AttributeSet_Add(eas, kQ3AttributeTypeDiffuseColor.rawValue, &colourSphere);
+		Q3AttributeSet_Add(eas, kQ3AttributeTypeDiffuseColor.rawValue, &colourSphere)
 	}
 
 	if let theSphere = Q3Ellipsoid_New(&sphereData) {
-		Q3Group_AddObject(theGroup, theSphere);
-		Q3Object_Dispose(theSphere);
+		Q3Group_AddObject(theGroup, theSphere)
+		Q3Object_Dispose(theSphere)
 	}
 
 	// Create the Cone
-	coneData.coneAttributeSet = Q3AttributeSet_New();
+	coneData.coneAttributeSet = Q3AttributeSet_New()
 	if let cas = coneData.coneAttributeSet {
-		Q3AttributeSet_Add(cas, kQ3AttributeTypeDiffuseColor.rawValue, &colourCone);
+		Q3AttributeSet_Add(cas, kQ3AttributeTypeDiffuseColor.rawValue, &colourCone)
 	}
 
 	if let theCone = Q3Cone_New(&coneData) {
-		Q3Group_AddObject(theGroup, theCone);
-		Q3Object_Dispose(theCone);
+		Q3Group_AddObject(theGroup, theCone)
+		Q3Object_Dispose(theCone)
 	}
 
 	// Clean up
 	if (torusData.torusAttributeSet != nil) {
-		Q3Object_Dispose(torusData.torusAttributeSet);
+		Q3Object_Dispose(torusData.torusAttributeSet)
 	}
 
 	if (sphereData.ellipsoidAttributeSet != nil) {
-		Q3Object_Dispose(sphereData.ellipsoidAttributeSet);
+		Q3Object_Dispose(sphereData.ellipsoidAttributeSet)
 	}
 
 	if (coneData.coneAttributeSet != nil) {
-		Q3Object_Dispose(coneData.coneAttributeSet);
+		Q3Object_Dispose(coneData.coneAttributeSet)
 	}
 
 	return theGroup
@@ -906,17 +892,17 @@ func createGeomTorus() -> TQ3GeometryObject! {
 								 interiorAttributeSet: nil,
 								 torusAttributeSet: nil)
 	
-	torusData.torusAttributeSet = Q3AttributeSet_New();
+	torusData.torusAttributeSet = Q3AttributeSet_New()
 	if let tas = torusData.torusAttributeSet {
 		Q3AttributeSet_Add(tas,
 						   kQ3AttributeTypeDiffuseColor.rawValue,
-						   &color);
+						   &color)
 	}
 	
 	defer {
 		// Clean up
 		if let tas = torusData.torusAttributeSet {
-			Q3Object_Dispose(tas);
+			Q3Object_Dispose(tas)
 		}
 	}
 	
@@ -1026,11 +1012,11 @@ func createGeomTriMesh() -> TQ3GeometryObject? {
 	var vertPoints = [TQ3Point3D(x: -1.5, y: -1.5, z: 0.0),
 					  TQ3Point3D(x:  0.0, y:  1.5, z: 0.0),
 					  TQ3Point3D(x:  1.5, y: -1.5, z: 0.0),
-					  TQ3Point3D(x:  0.0, y: -1.5, z: -1.0)];
+					  TQ3Point3D(x:  0.0, y: -1.5, z: -1.0)]
 	var vertColours = [TQ3ColorRGB(r: 1.0, g: 0.0, b: 0.0),
 					   TQ3ColorRGB(r: 0.0, g: 1.0, b: 0.0),
 					   TQ3ColorRGB(r: 0.0, g: 0.0, b: 1.0),
-					   TQ3ColorRGB(r: 1.0, g: 1.0, b: 0.0)];
+					   TQ3ColorRGB(r: 1.0, g: 1.0, b: 0.0)]
 	var triangles: [TQ3TriMeshTriangleData] = [TQ3TriMeshTriangleData(pointIndices: (1, 0, 3)), TQ3TriMeshTriangleData(pointIndices: (3, 2, 1))]
 	var vertUVs = [TQ3Param2D]()
 	
@@ -1098,7 +1084,7 @@ func createPastelGroup() -> TQ3GroupObject! {
 								  minorAxis: TQ3Vector3D(x: 0.4, y: 0, z: 0),
 								  faceAttributeSet: nil, boxAttributeSet: nil)
 
-		cubeData.boxAttributeSet = Q3AttributeSet_New();
+		cubeData.boxAttributeSet = Q3AttributeSet_New()
 		Q3AttributeSet_Add(cubeData.boxAttributeSet!,
 						   kQ3AttributeTypeDiffuseColor.rawValue, &colorCube)
 		let theCube = Q3Box_New(&cubeData)!
@@ -1168,7 +1154,7 @@ func createGeomBounds(_ theGeom: TQ3GeometryObject, in aView: TQ3ViewObject) -> 
 	Q3Vector3D_Set(&boxData.majorAxis,   0.0, 0.0, theBounds.max.z - theBounds.min.z)
 	Q3Vector3D_Set(&boxData.minorAxis,   theBounds.max.x - theBounds.min.x, 0.0, 0.0)
 	
-	boxData.faceAttributeSet = nil;
+	boxData.faceAttributeSet = nil
 	boxData.boxAttributeSet  = Q3AttributeSet_New()
 	if let bas = boxData.boxAttributeSet {
 		Q3AttributeSet_Add(bas, TQ3AttributeType(kQ3AttributeTypeDiffuseColor.rawValue), &boxColour)
@@ -1208,10 +1194,10 @@ private func makeTextureAttrs(fromName inName: String) -> TQ3AttributeSet? {
 		return nil
 	}
 	if var theShader = loadTextureShaderFromResource(named: inName) {
-		Q3AttributeSet_Add(atts, kQ3AttributeTypeSurfaceShader.rawValue, &theShader );
+		Q3AttributeSet_Add(atts, kQ3AttributeTypeSurfaceShader.rawValue, &theShader)
 		Q3Object_Dispose(theShader)
 	}
-	return atts;
+	return atts
 }
 
 func createBallAboutCamera() -> TQ3GroupObject? {
@@ -1310,7 +1296,7 @@ func createSubdividedBoxAboutCamera(_ inView: TQ3ViewObject) -> TQ3GroupObject? 
 		return nil
 	}
 
-	let iter = CQ3Group(group: decomp, type: kQ3GeometryTypeTriMesh);
+	let iter = GroupIterator(group: decomp, type: kQ3GeometryTypeTriMesh)
 	for theItem in iter {
 		guard let subItem = SubdivideTriMesh(theItem.rawValue, 4) else {
 			continue

@@ -1677,7 +1677,7 @@ static TQ3ShaderObject LoadTextureShaderFromResource( NSString* inName )
 		URLForResource: namePart withExtension: extPart];
 	if (theURL != nil)
 	{
-		theShader = QutTexture_CreateTextureFromTGAFile( theURL.path.UTF8String );
+		theShader = QutTexture_CreateTextureFromTGAFile( theURL.fileSystemRepresentation );
 	}
 	return theShader;
 }

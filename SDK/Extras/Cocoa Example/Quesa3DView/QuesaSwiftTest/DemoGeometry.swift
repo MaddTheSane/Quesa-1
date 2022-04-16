@@ -126,7 +126,7 @@ func createGeomBox() -> TQ3GeometryObject? {
 }
 
 /// Create a Cone object.
-func createGeomCone() -> TQ3GeometryObject! {
+func createGeomCone() -> TQ3GeometryObject? {
 	var coneColour = TQ3ColorRGB(r: 1, g: 1, b: 1)
 	var bottomColour = TQ3ColorRGB(r: 1, g: 0, b: 0)
 	var faceTrans = TQ3ColorRGB(r: 0.2, g: 0.2, b: 0.2)
@@ -182,7 +182,7 @@ func createGeomCone() -> TQ3GeometryObject! {
 }
 
 /// Create a Cylinder object.
-func createGeomCylinder() -> TQ3GeometryObject! {
+func createGeomCylinder() -> TQ3GeometryObject? {
 	var topColour =		TQ3ColorRGB(r: 0.0, g: 0.0, b: 1.0)
 	var bottomColour =	TQ3ColorRGB(r: 0.0, g: 1.0, b: 0.0)
 	var faceColour =	TQ3ColorRGB(r: 1.0, g: 0.0, b: 0.0)
@@ -243,7 +243,7 @@ func createGeomCylinder() -> TQ3GeometryObject! {
 }
 
 /// Create a Disk object.
-func createGeomDisk() -> TQ3GeometryObject! {
+func createGeomDisk() -> TQ3GeometryObject? {
 	var diskColour = TQ3ColorRGB(r: 1, g: 1, b: 0)
 	var diskData = TQ3DiskData()
 	
@@ -271,7 +271,7 @@ func createGeomDisk() -> TQ3GeometryObject! {
 }
 
 /// Create an Ellipse object.
-func createGeomEllipse() -> TQ3GeometryObject! {
+func createGeomEllipse() -> TQ3GeometryObject? {
 	var ellipseColour = TQ3ColorRGB(r: 1, g: 0, b: 0)
 	var ellipseData = TQ3EllipseData()
 	
@@ -299,7 +299,7 @@ func createGeomEllipse() -> TQ3GeometryObject! {
 }
 
 /// Create an Ellipsoid object.
-func createGeomEllipsoid() -> TQ3GeometryObject! {
+func createGeomEllipsoid() -> TQ3GeometryObject? {
 	var ellipsoidColour = TQ3ColorRGB(r: 1, g: 0, b: 0)
 	var ellipsoidData = TQ3EllipsoidData(origin: TQ3Point3D(x: 0, y: 0, z: 0),
 										 orientation: TQ3Vector3D(x: 0, y: 0, z: 0.5),
@@ -328,7 +328,7 @@ func createGeomEllipsoid() -> TQ3GeometryObject! {
 }
 
 /// Create an General Polygon object.
-func createGeomGeneralPolygon() -> TQ3GeometryObject! {
+func createGeomGeneralPolygon() -> TQ3GeometryObject? {
 	let vertPoints = [TQ3Point3D(x: -0.5, y: -1, z: 0),
 					  TQ3Point3D(x: -1.0, y:  1, z: 0),
 					  TQ3Point3D(x: -0.2, y:  0, z: 0),
@@ -380,7 +380,7 @@ func createGeomGeneralPolygon() -> TQ3GeometryObject! {
 }
 
 /// Create a Line object.
-func createGeomLine() -> TQ3GeometryObject! {
+func createGeomLine() -> TQ3GeometryObject? {
 	let vertPoints = [TQ3Point3D(x: -1, y: -1, z: -1), TQ3Point3D(x: 1, y: 1, z: 1)]
 	var vertColours = [TQ3ColorRGB(r: 1, g: 0, b: 0), TQ3ColorRGB(r: 0, g: 0, b: 1)]
 	
@@ -422,7 +422,7 @@ func createGeomLine() -> TQ3GeometryObject! {
 }
 
 /// Create a Marker object.
-func createGeomMarker() -> TQ3GeometryObject! {
+func createGeomMarker() -> TQ3GeometryObject? {
 	var imageData = Data([UInt8](arrayLiteral: 0x7E, 0x3C, 0x3C, 0x66, 0x7E, 0x7C, 0x18,
 								 0x60, 0x60, 0x66, 0x66, 0x60, 0x66, 0x18,
 								 0x7C, 0x3C, 0x60, 0x7E, 0x7C, 0x66, 0x18,
@@ -454,7 +454,7 @@ func createGeomMarker() -> TQ3GeometryObject! {
 }
 
 /// Create a Mesh object.
-func createGeomMesh() -> TQ3GeometryObject! {
+func createGeomMesh() -> TQ3GeometryObject? {
 	var theVertices = [TQ3Vertex3D(point: TQ3Point3D(x: -1.5, y: 1.5, z: 0), attributeSet: nil),
 					   TQ3Vertex3D(point: TQ3Point3D(x: -1.5, y: -1.5, z: 0), attributeSet: nil),
 					   TQ3Vertex3D(point: TQ3Point3D(x: 0, y: 1.5, z: 0.9), attributeSet: nil),
@@ -509,7 +509,7 @@ func createGeomMesh() -> TQ3GeometryObject! {
 }
 
 /// Create a NURB curve object.
-func createGeomNURBCurve() -> TQ3GeometryObject! {
+func createGeomNURBCurve() -> TQ3GeometryObject? {
 	var theColour = TQ3ColorRGB(r: 0.8, g: 0.2, b: 0.6)
 	var thePoints = [TQ3RationalPoint4D(x: -2.0, y:  0.0, z:  0.0, w: 1),
 					 TQ3RationalPoint4D(x: -1.0, y:  1.0, z:  0.0, w: 1),
@@ -538,7 +538,7 @@ func createGeomNURBCurve() -> TQ3GeometryObject! {
 }
 
 /// Create a NURB patch object.
-func createGeomNURBPatch() -> TQ3GeometryObject! {
+func createGeomNURBPatch() -> TQ3GeometryObject? {
 	var thePoints = [TQ3RationalPoint4D(x: -1.5, y: -1.0, z:  0.0, w: 1),
 					 TQ3RationalPoint4D(x: -0.5, y: -1.0, z:  2.0, w: 1),
 					 TQ3RationalPoint4D(x:  0.5, y: -1.0, z:  0.0, w: 1),
@@ -596,7 +596,7 @@ func createGeomNURBPatch() -> TQ3GeometryObject! {
 }
 
 /// Create a Pixmap marker object.
-func createGeomPixmapMarker() -> TQ3GeometryObject! {
+func createGeomPixmapMarker() -> TQ3GeometryObject? {
 	var theImage = [TQ3Uns32](repeating: 0, count: 64 * 64)
 	for y in 0 ..< 64 {
 		let g = TQ3Uns32(y * 4)
@@ -637,8 +637,8 @@ func createGeomPoint() -> TQ3GeometryObject! {
 }
 
 /// Create a Polygon object.
-func createGeomPolygon() -> TQ3GeometryObject! {
-	var vertPoints = [TQ3Point3D(x: -0.5, y: -1.0, z: 0.0),
+func createGeomPolygon() -> TQ3GeometryObject? {
+	let vertPoints = [TQ3Point3D(x: -0.5, y: -1.0, z: 0.0),
 					  TQ3Point3D(x: -1.0, y:  0.0, z: 0.0),
 					  TQ3Point3D(x:  0.0, y:  1.5, z: 0.0),
 					  TQ3Point3D(x:  1.0, y:  0.0, z: 0.0),
@@ -682,7 +682,7 @@ func createGeomPolygon() -> TQ3GeometryObject! {
 }
 
 /// Create a Polyhedron object.
-func createGeomPolyhedron() -> TQ3GeometryObject! {
+func createGeomPolyhedron() -> TQ3GeometryObject? {
 	var theTriangles = [TQ3PolyhedronTriangleData(vertexIndices: (0, 2, 3), edgeFlag: kQ3PolyhedronEdge01.rawValue, triangleAttributeSet: nil),
 						TQ3PolyhedronTriangleData(vertexIndices: (0, 3, 4), edgeFlag: kQ3PolyhedronEdge12.rawValue, triangleAttributeSet: nil),
 						TQ3PolyhedronTriangleData(vertexIndices: (0, 4, 1), edgeFlag: kQ3PolyhedronEdge20.rawValue, triangleAttributeSet: nil),
@@ -755,7 +755,7 @@ func createGeomPolyhedron() -> TQ3GeometryObject! {
 }
 
 /// Create a PolyLine object.
-func createGeomPolyLine() -> TQ3GeometryObject! {
+func createGeomPolyLine() -> TQ3GeometryObject? {
 	let vertPoints = [TQ3Point3D(x: -1.0, y: -1.0, z: -1.0),
 					  TQ3Point3D(x: -1.0, y: -0.5, z:  1.0),
 					  TQ3Point3D(x:  1.0, y:  0.0, z:  1.0),
@@ -792,7 +792,7 @@ func createGeomPolyLine() -> TQ3GeometryObject! {
 }
 
 /// Create the Quesa logo geometry.
-func createGeomQuesa() -> TQ3GroupObject! {
+func createGeomQuesa() -> TQ3GroupObject? {
 	var	transformData = TQ3RotateTransformData(axis: kQ3AxisZ, radians: Q3Math_DegreesToRadians(45.0))
 	var colourTorus = TQ3ColorRGB(r: 0.19, g: 0.21, b: 0.60)
 	var colourSphere = TQ3ColorRGB(r: 0.66, g: 0.01, b: 0.01)
@@ -880,7 +880,7 @@ func createGeomQuesa() -> TQ3GroupObject! {
 }
 
 /// Create a Torus object.
-func createGeomTorus() -> TQ3GeometryObject! {
+func createGeomTorus() -> TQ3GeometryObject? {
 	var color = TQ3ColorRGB(r: 1.0, g: 0.7, b: 0.4)
 	var torusData = TQ3TorusData(origin: TQ3Point3D(x: 0, y: 0, z: 0),
 								 orientation: TQ3Vector3D(x: 0, y: 0, z: 0.1),
@@ -915,7 +915,7 @@ func createGeomTorus() -> TQ3GeometryObject! {
 }
 
 /// Create a Triangle object.
-func createGeomTriangle() -> TQ3GeometryObject! {
+func createGeomTriangle() -> TQ3GeometryObject? {
 	let vertPoints = [TQ3Point3D(x: -1.5, y: -1.5, z: 0),
 					  TQ3Point3D(x: 0, y: 1.5, z: 0),
 					  TQ3Point3D(x: 1.5, y: -1.5, z: 0)]
@@ -1003,8 +1003,62 @@ func createGeomTriangle() -> TQ3GeometryObject! {
 }
 
 /// Create a TriGrid object.
-func createGeomTriGrid() -> TQ3GeometryObject! {
-	return nil
+func createGeomTriGrid() -> TQ3GeometryObject? {
+	let kTriGridRows = 5
+	let kTriGridCols = 10
+	let kTriGridPoints = kTriGridRows * kTriGridCols
+	
+	
+	var theColour = TQ3ColorRGB(r: 0.8, g: 0.5, b: 0.2)
+	var vertUVs = [TQ3Param2D]()
+	var vertPoints = [TQ3Point3D]()
+	var theVerts = [TQ3Vertex3D](repeating: TQ3Vertex3D(), count: kTriGridPoints)
+	vertPoints.reserveCapacity(kTriGridPoints)
+	
+	for i in 0 ..< kTriGridPoints {
+		let row = i / kTriGridCols
+		let col = i % kTriGridCols
+		
+		//TODO: migrate to Float.random(in:)
+		let aMaxCol = 3.0/Float(kTriGridCols) * Float(col) - 1.5 + Float(arc4random()) / Float(RAND_MAX) / 10.0
+		let aMinRow = 3.0/Float(kTriGridRows) * Float(row) - 1.5 + Float(arc4random()) / Float(RAND_MAX) / 10.0
+
+		let point = TQ3Point3D(x: aMaxCol, y: aMinRow, z: /*Float.random(in: 0.0 ... 0.2)*/ Float(arc4random()) / Float(RAND_MAX) / 5.0)
+		vertPoints.append(point)
+	}
+	
+	createUVsFromPoints(vertPoints, &vertUVs)
+
+	for (i, point) in vertPoints.enumerated() {
+		theVerts[i].point        = point
+		theVerts[i].attributeSet = Q3AttributeSet_New()
+		
+		if let attrSet = theVerts[i].attributeSet {
+			Q3AttributeSet_Add(attrSet,
+							   kQ3AttributeTypeSurfaceUV.rawValue,
+							   &vertUVs[i])
+		}
+	}
+
+	for i in 0 ..< vertPoints.count {
+		if let attrSet = theVerts[i].attributeSet {
+			Q3Object_Dispose(attrSet)
+		}
+	}
+	
+	var triGridData = TQ3TriGridData(numRows: TQ3Uns32(kTriGridRows), numColumns: TQ3Uns32(kTriGridCols), vertices: &theVerts, facetAttributeSet: nil, triGridAttributeSet: Q3AttributeSet_New())
+
+	if let attrSet = triGridData.triGridAttributeSet {
+		Q3AttributeSet_Add(attrSet, kQ3AttributeTypeDiffuseColor.rawValue, &theColour)
+	}
+	
+	defer {
+		if let attrSet = triGridData.triGridAttributeSet {
+			Q3Object_Dispose(attrSet)
+		}
+	}
+	
+	return Q3TriGrid_New(&triGridData)
 }
 
 /// Create a TriMesh object.
@@ -1051,7 +1105,7 @@ func createGeomTriMesh() -> TQ3GeometryObject? {
 }
 
 /// Create a group of pale objects.
-func createPastelGroup() -> TQ3GroupObject! {
+func createPastelGroup() -> TQ3GroupObject? {
 	guard let theGroup = Q3DisplayGroup_New() else {
 		return nil
 	}

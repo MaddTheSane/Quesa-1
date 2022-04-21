@@ -111,13 +111,60 @@ class QD3DView: NSOpenGLView {
 		}
 	}
 
+	override var acceptsFirstResponder: Bool {
+		return true
+	}
+	
+	private func sendEventToDelegate(_ inEvent: NSEvent) {
+		qd3dDelegate?.qd3dView?(self, eventOccurred: inEvent)
+	}
+	
+	override func keyDown(with event: NSEvent) {
+		sendEventToDelegate(event)
+	}
+	
+	override func keyUp(with event: NSEvent) {
+		sendEventToDelegate(event)
+	}
+	
+	override func mouseDown(with event: NSEvent) {
+		sendEventToDelegate(event)
+	}
+	
+	override func flagsChanged(with event: NSEvent) {
+		sendEventToDelegate(event)
+	}
 	
 	/// This shouldn't be called directly, but is here for subclasses to override
 	/// (although they shouldn't need to...).
 	/// if you want to 'force' a Quesa3DView to draw a frame, use `-setNeedsDisplay:YES`
 	/// or `-display`.
 	func drawQD3D() {
+		var qd3dStatus: TQ3Status = kQ3Failure
+		qd3dDelegate?.qd3dViewWillRender?(self)
 		
+		guard let qd3dView = qd3dView else {
+			print("qd3dView is still NULL!")
+			return
+		}
+		
+		qd3dStatus = Q3View_StartRendering(qd3dView)
+		
+		if qd3dStatus == kQ3Success {
+			repeat {
+				qd3dDelegate?.qd3dViewRenderFrame?(self)
+			} while Q3View_EndRendering(qd3dView) == kQ3ViewStatusRetraverse
+		}
+		
+		// Call the post-render callback, if any
+		qd3dDelegate?.qd3dViewDidRender?(self)
+	}
+	
+	override func resetCursorRects() {
+		if cursor == nil {
+			self.cursor = NSCursor.arrow
+		}
+		addCursorRect(bounds, cursor: cursor)
 	}
 
     override func draw(_ dirtyRect: NSRect) {
@@ -130,9 +177,171 @@ class QD3DView: NSOpenGLView {
     }
     
 	private func setupQD3D() {
-//		[self initQ3DrawContext];
-//		[self initQ3View];
+		initQ3DrawContext()
+		initQ3View()
 	}
+	
+	private func initQ3DrawContext() {
+		var cocoaDrawContextData = TQ3CocoaDrawContextData()
+		let frame = bounds
+		var qd3dStatus: TQ3Status = kQ3Failure
+		var resetDrawContext = true
+		
+		// See if we've got an existing draw context we can reuse. If we
+		// do, we grab as much of its state data as we can - this means we
+		// wil preserve any changes made by the app's view-configure method.
+		if let qd3dView = qd3dView {
+			qd3dStatus = Q3View_GetDrawContext(qd3dView, &drawContext)
+			resetDrawContext = false
+			Q3DrawContext_GetData(self.drawContext!, &cocoaDrawContextData.drawContextData)
+			Q3Object_Dispose(self.drawContext)
+
+		}
+		
+		// Reset the draw context data if required
+		if resetDrawContext {
+			// Fill in the draw context data
+			cocoaDrawContextData.drawContextData.clearImageMethod  = kQ3ClearMethodWithColor
+			cocoaDrawContextData.drawContextData.clearImageColor.a = 1.0
+			cocoaDrawContextData.drawContextData.clearImageColor.r = 0.0
+			cocoaDrawContextData.drawContextData.clearImageColor.g = 0.0
+			cocoaDrawContextData.drawContextData.clearImageColor.b = 0.2
+			cocoaDrawContextData.drawContextData.paneState         = kQ3False
+			cocoaDrawContextData.drawContextData.maskState		   = kQ3False
+			cocoaDrawContextData.drawContextData.doubleBufferState = kQ3True
+		}
+
+		cocoaDrawContextData.drawContextData.pane.min.x = Float(frame.origin.x)
+		cocoaDrawContextData.drawContextData.pane.min.y = Float(frame.origin.y)
+		cocoaDrawContextData.drawContextData.pane.max.x = Float(frame.origin.x+frame.size.width)
+		cocoaDrawContextData.drawContextData.pane.max.y = Float(frame.origin.y+frame.size.height)
+		
+		cocoaDrawContextData.nsView  = Unmanaged.passUnretained(self).toOpaque()
+
+		// Create the draw context object
+		self.drawContext = Q3CocoaDrawContext_New(&cocoaDrawContextData);
+		if self.drawContext == nil {
+			NSLog("Unable to create draw context in initQ3DrawContext");
+		}
+		
+		
+		// Sync to monitor refresh
+		if let drawCtx = self.drawContext {
+			var doSync: TQ3Boolean = kQ3True;
+			Q3Object_SetProperty(drawCtx, kQ3DrawContextPropertySyncToRefresh,
+								 TQ3Uns32(MemoryLayout<TQ3Boolean>.size), &doSync)
+		}
+	}
+	
+	private func initQ3View() {
+		// Create the view
+		if self.drawContext != nil {
+			// Create the view
+			self.qd3dView = Q3View_New()
+			if let qd3dView = self.qd3dView {
+				// Configure the view
+				Q3View_SetDrawContext(qd3dView,    self.drawContext!)
+				Q3View_SetRendererByType(qd3dView, kQ3RendererTypeOpenGL)
+				createDefaultCamera()
+				createDefaultLights()
+
+				qd3dDelegate?.qd3dViewDidInit?(self)
+			}
+		}
+	}
+	
+	private func createDefaultLights() {
+		let sunDirection = TQ3Vector3D(x: -1, y: 0, z: -1)
+		let eyeDirection = TQ3Vector3D(x: 0, y: 0, z: -1)
+		let pointLocation = TQ3Point3D(x: -10, y: 0, z: 10)
+		let colourWhite = TQ3ColorRGB(r: 1, g: 1, b: 1)
+		
+		var ambientLight = TQ3LightData()
+		var sunLight = TQ3DirectionalLightData()
+		var eyeLight = TQ3DirectionalLightData()
+		var pointLight = TQ3PointLightData()
+
+		// Set up the ambient light
+		ambientLight.isOn       = kQ3True
+		ambientLight.color      = colourWhite
+		ambientLight.brightness = 0.3
+
+		// Set up the directional lights
+		sunLight.lightData.isOn       = kQ3True;
+		sunLight.lightData.color      = colourWhite;
+		sunLight.lightData.brightness = 0.8;
+		sunLight.castsShadows         = kQ3True;
+		sunLight.direction            = sunDirection;
+
+		eyeLight.lightData.isOn       = kQ3True;
+		eyeLight.lightData.color      = colourWhite;
+		eyeLight.lightData.brightness = 0.2;
+		eyeLight.castsShadows         = kQ3False;
+		eyeLight.direction            = eyeDirection;
+
+
+		// Set up the point light
+		pointLight.lightData.isOn       = kQ3True;
+		pointLight.lightData.color      = colourWhite;
+		pointLight.lightData.brightness = 0.8;
+		pointLight.castsShadows         = kQ3True;
+		pointLight.location				= pointLocation;
+		pointLight.attenuation			= kQ3AttenuationTypeNone;
+
+		createLight(withData: ambientLight)
+		createLight(withData: sunLight)
+		createLight(withData: eyeLight)
+		createLight(withData: pointLight)
+	}
+	
+	func createDefaultCamera() {
+		let cameraFrom = TQ3Point3D(x: 0, y: 0, z: 5)
+		let cameraTo = TQ3Point3D(x: 0, y: 0, z: 0)
+		let cameraUp = TQ3Vector3D(x: 0, y: 1, z: 0)
+		let fieldOfView = Q3Math_DegreesToRadians(50.0)
+		let hither: Float = 0.1
+		let yon: Float = 10
+		
+		var theArea = TQ3Area()
+		
+		guard let qd3dView = qd3dView else {
+			return
+		}
+		// Get the size of the image we're rendering
+		Q3DrawContext_GetPane(self.drawContext!, &theArea)
+		var cameraData = TQ3ViewAngleAspectCameraData()
+		
+		// Fill in the camera data
+		cameraData.cameraData.placement.cameraLocation 	= cameraFrom
+		cameraData.cameraData.placement.pointOfInterest = cameraTo
+		cameraData.cameraData.placement.upVector 		= cameraUp
+		cameraData.cameraData.range.hither				= hither
+		cameraData.cameraData.range.yon					= yon
+		cameraData.cameraData.viewPort.origin.x			= -1.0
+		cameraData.cameraData.viewPort.origin.y			=  1.0
+		cameraData.cameraData.viewPort.width			=  2.0
+		cameraData.cameraData.viewPort.height			=  2.0
+		cameraData.fov									= fieldOfView
+
+		let rectWidth: Float           = theArea.max.x - theArea.min.x
+		let rectHeight: Float          = theArea.max.y - theArea.min.y
+		cameraData.aspectRatioXToY = (rectWidth / rectHeight)
+
+		// Create the camera object
+		let theCamera = Q3ViewAngleAspectCamera_New(&cameraData);
+		Q3View_SetCamera(qd3dView, theCamera);
+		if theCamera != nil {
+			Q3Object_Dispose(theCamera)
+		}
+	}
+	
+	override func reshape() {
+		super.reshape()
+		if let _ = qd3dView, let qd3dDelegate = qd3dDelegate {
+			qd3dDelegate.qd3dViewReshaped?(self)
+		}
+	}
+	
 }
 
 

@@ -528,7 +528,7 @@ typedef struct TQ3XDrawContextData {
  */
 typedef struct TQ3CocoaDrawContextData {
     TQ3DrawContextData                          drawContextData;
-    void                                        * _Nonnull nsView;
+    void                                        * _Null_unspecified nsView;
 } TQ3CocoaDrawContextData;
 
 #endif // QUESA_OS_COCOA
